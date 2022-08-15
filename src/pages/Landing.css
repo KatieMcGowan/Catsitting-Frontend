@@ -1,0 +1,46 @@
+h1 {
+  font-size: 18px;
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+.p-landing {
+  max-width: 300px;
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+  .p-landing {
+    font-size: 16px;
+  }
+}
+
+.landing-wrapper {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 15px;
+}
+
+.landing-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: bisque;
+  border: solid 3px grey;
+  border-radius: 30px;
+  margin: 15px;
+  min-height: 160px;
+}
+
+.landing-features {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
