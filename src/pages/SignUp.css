@@ -1,0 +1,48 @@
+.signup-header {
+  margin: 15px;
+}
+
+.p-signup {
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+  .p-signup {
+    font-size: 16px;
+  }
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+}
+
+.signup-form-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5px;
+}
+
+label {
+  font-size: 12px
+}
+
+@media (min-width: 600px) {
+  .label {
+    font-size: 16px;
+  }
+}
+
+.p-login-link {
+  font-size: 12px;
+  align-self: center;
+}
+
+@media (min-width: 600px) {
+  .p-login-link {
+    font-size: 16px;
+  }
+}
