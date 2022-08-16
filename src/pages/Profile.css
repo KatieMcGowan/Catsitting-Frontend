@@ -1,0 +1,111 @@
+.profile-wrapper {
+  margin: 15px
+}
+
+.p-profile-apartment-number {
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}
+
+.your-cats-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.your-cats-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 0 10px 0;
+}
+
+button {
+  background-color: pink;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.your-cat-pill {
+  background-color: paleturquoise;
+  border: solid 3px skyblue;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  min-height: 50px;
+  width: 90%;
+  margin: 0 0 10px 0;
+}
+
+.your-cat-pill {
+  display: flex;
+  flex-flow: column;
+}
+
+.p-cat-header {
+  font-size: 12px;
+  margin: 10px 0;
+  font-weight: bold;
+  align-self: center;
+}
+
+.p-care-instructions {
+  margin: 5px 0 0 0;
+}
+.p-care-header {
+  font-size: 12px;
+}
+
+.p-pills {
+  font-size: 11px;
+}
+
+.p-update-cat {
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+@media (min-width: 600px) {
+  .p-profile-apartment-number {
+    font-size: 16px;
+  }
+
+  .p-pills {
+    font-size: 16px
+  }
+
+  .p-update-cat {
+    font-size: 16px;
+  }
+
+  .your-cats-header {
+    max-width: 1200px;
+  }
+
+  .your-cat-pill {
+    max-width: 1200px;
+  }
+
+  .cat-info {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+    width: 70%; 
+  }
+
+  .p-cat-header {
+    font-size: 16px;
+  }
+
+  .p-care-header {
+    font-size: 16px;
+  }
+}
+
