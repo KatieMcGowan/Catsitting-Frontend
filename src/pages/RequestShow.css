@@ -1,0 +1,14 @@
+.request-show-wrapper {
+  margin: 15px;
+}
+
+.p-cancel-edit-request{
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+@media (min-width: 600px) {
+  .p-cancel-edit-request {
+    font-size: 16px;
+  }
+}
