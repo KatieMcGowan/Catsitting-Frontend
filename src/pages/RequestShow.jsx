@@ -3,7 +3,7 @@ import "./RequestShow.css"
 const RequestShow = () => {
   return(
     <div className="request-show-wrapper">
-      <h1 className="requests-show-header">Request Show</h1>
+      <h1 className="requests-show-header">Request Details</h1>
       <div className="requests-available">
         <div className="your-cat-pill">
           <div className="individual-request-wrapper">
@@ -45,6 +45,31 @@ const RequestShow = () => {
           </div>
           <div className="p-cancel-edit-request">Cancel/Edit Request</div>
         </div>
+      </div>
+      <h1 className="messages-header">Messages</h1>
+      <div className="messages-wrapper">
+        <div className="messages-left">
+          <div>
+            <p className="message">Thank you for accepting. Meet in the lobby on 91/22 at noon for key handoff?</p>
+            <p className="message-timestamp">August 17 @ 2:30PM</p>
+          </div>  
+        </div>
+        <div className="messages-right">
+          <p className="message">Sure, see you then!</p>
+          <p className="message-timestamp">August 17 @ 2:45PM</p>
+        </div>
+      </div>
+      <div className="new-message-wrapper">
+        <form className="new-message"/*onSubmit={handleSubmit}*/>
+          <input
+            className="message-input"
+            type="text"
+            placeholder="Type your message here"
+            /*onChange={handleChange}
+            value={message}*/
+          /> 
+          <input type="submit" className="submit-message" value="Post"/>  
+        </form>
       </div>
     </div>
   );
