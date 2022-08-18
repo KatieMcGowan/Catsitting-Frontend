@@ -58,7 +58,7 @@ const SignUp = () => {
             />
           </div>
           <div className="signup-form-input">
-            <input type="submit" value="Create User"/>
+            <input type="submit" className="submit" value="Create User"/>
           </div>
         </form>
         <p className="p-login-link">Already have an account with us? Click here to log in!</p>

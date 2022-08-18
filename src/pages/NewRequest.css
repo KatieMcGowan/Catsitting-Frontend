@@ -1,0 +1,32 @@
+.new-request-wrapper {
+  margin: 15px;
+}
+
+.p-new-request {
+  font-size: 12px;
+}
+
+.new-request-form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.new-request-form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .p-new-request {
+    font-size: 16px;
+  }
+
+  .new-request-form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 15px;
+  }
+}

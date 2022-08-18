@@ -109,7 +109,7 @@ const EditCat = () => {
           </div>
         </div>
         <div className="new-cat-form-input"> 
-          <input type="submit" value="Add Cat"/>
+          <input type="submit" className="submit" value="Edit Cat"/>
         </div>
       </form>
       <p className="remove-cat">Remove your cat's information</p>  

@@ -68,7 +68,7 @@ const RequestShow = () => {
             /*onChange={handleChange}
             value={message}*/
           /> 
-          <input type="submit" className="submit-message" value="Post"/>  
+          <input type="submit" className="submit" value="Post"/>  
         </form>
       </div>
     </div>
