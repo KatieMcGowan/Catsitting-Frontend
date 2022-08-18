@@ -11,7 +11,8 @@ const Nav = () => {
       <Link to={"/dashboard/:userid/addcat"}><h2>Add Cat</h2></Link>
       <Link to={"/dashboard/:userid/:catid/edit"}><h2>Edit Cat</h2></Link>
       <Link to={"/dashboard/requests"}><h2>Available Requests</h2></Link>
-      <Link to={"/dashboard/requests/:requestid"}><h2>Request Show</h2></Link>
+      <Link to={"/dashboard/requests/:requestid"}><h2>Show Request</h2></Link>
+      <Link to={"/dashboard/requests/:requestid/edit"}><h2>Edit Request</h2></Link>
       <Link to={"/dashboard/requests/new"}><h2>New Request</h2></Link>
     </div>
   )

@@ -11,6 +11,7 @@ import NewRequest from "./pages/NewRequest";
 import Profile from "./pages/Profile";
 import RequestShow from "./pages/RequestShow";
 import SignUp from "./pages/SignUp";
+import EditRequest from "./pages/EditRequest";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path={"/dashboard/:userid/addcat"} element={<AddCat />} />
         <Route path={"/dashboard/requests"} element={<AvailableRequests />} />
         <Route path={"/dashboard/requests/:requestid"} element={<RequestShow />} />
+        <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest />} />
         <Route path={"/dashboard/requests/new"} element={<NewRequest />} />
       </Routes>
     </div>  
