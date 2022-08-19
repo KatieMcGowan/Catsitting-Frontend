@@ -1,6 +1,45 @@
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
+import UserQuery from "../queries/UserQuery"
 import "./LogIn.css"
 
-const LogIn = () => {
+const LogIn = (props) => {
+  let navigate = useNavigate();
+
+  const [state, setState] = useState({
+    username: "",
+    password: ""
+  })
+
+  const [users, setUsers] = useState({})
+
+  useEffect(() => {
+    UserQuery.all()
+    .then(data => {
+      setUsers({
+        users: data
+      });
+    });
+  }, []);
+  
+  const handleChange = (event) => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    for (let i = 0; i < users.users.length; i++ ){
+      if (users.users[i].username === state.username && users.users[i].password === state.password) {
+        let userid = users.users[i]._id
+        props.authSet(true,userid)
+        navigate("/dashboard")
+      };
+    };
+  };
+
   return(
     <div className="login-wrapper">
       <div className="login-header">
@@ -8,7 +47,7 @@ const LogIn = () => {
         <p className="p-login">Log in to your account to view your neighbor's catsitting requests and request catsitting from your neighbors.</p>
       </div>
       <div className="login-form">
-        <form /*onSubmit={handleSubmit}*/>
+        <form onSubmit={handleSubmit}>
           <div className="login-form-input">
             <label htmlFor="username">Username</label>
             <input
@@ -17,8 +56,8 @@ const LogIn = () => {
               minLength="4"
               maxLength="25"
               required={true}
-              /*onChange={handleChange}
-              value={state.username}*/
+              onChange={handleChange}
+              value={state.username}
             />
           </div>
           <div className="login-form-input">
@@ -29,8 +68,8 @@ const LogIn = () => {
               minLength="4"
               maxLength="30"
               required={true}
-              /*onChange={handleChange}
-              value={state.password}*/
+              onChange={handleChange}
+              value={state.password}
             />
           </div>
           <div className="login-form-input">
