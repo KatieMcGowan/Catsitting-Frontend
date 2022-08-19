@@ -14,6 +14,10 @@ import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
 
 const App = () => {
+
+  //TRY TO PASS USERID AS A PROP INTO EACH PAGE
+  //HAVE FUNCTION ON LOGIN PAGE THAT RETURNS USERID
+  
   return (
     <div>
       <Header />

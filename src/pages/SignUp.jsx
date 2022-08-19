@@ -26,7 +26,7 @@ const SignUp = () => {
             <input
               type="text"
               name="apartmentnumber"
-              minLength="3"
+              minLength="1"
               maxLength="3"
               required={true}
               /*onChange={handleChange}
