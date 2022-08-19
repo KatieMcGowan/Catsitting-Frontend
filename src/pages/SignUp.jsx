@@ -1,6 +1,33 @@
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import UserQuery from "../queries/UserQuery"
 import "./SignUp.css"
 
 const SignUp = () => {
+  let navigate = useNavigate();
+
+  const [state, setState] = useState({
+    firstname: "",
+    apartment: "",
+    username: "",
+    password: "",
+  })
+
+  const handleChange = (event) => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    UserQuery.create(state)
+    .then(data => {
+      navigate("/")
+    })
+  };
+
   return(
     <div className="signup-wrapper">
       <div className="signup-header">
@@ -8,7 +35,7 @@ const SignUp = () => {
         <p className="p-signup">Create an account with us to view your neighbor's catsitting requests and request catsitting from your neighbors.</p>
       </div>
       <div className="signup-form">
-        <form /*onSubmit={handleSubmit}*/>
+        <form onSubmit={handleSubmit}>
           <div className="signup-form-input">
             <label htmlFor="firstname">First Name</label>
             <input
@@ -17,20 +44,20 @@ const SignUp = () => {
               minLength="1"
               maxLength="20"
               required={true}
-              /*onChange={handleChange}
-              value={state.firstname}*/
+              onChange={handleChange}
+              value={state.firstname}
             />
           </div>
           <div className="signup-form-input">
-            <label htmlFor="apartmentnumber">Apartment Number</label>
+            <label htmlFor="apartment">Apartment Number</label>
             <input
               type="text"
-              name="apartmentnumber"
+              name="apartment"
               minLength="1"
               maxLength="3"
               required={true}
-              /*onChange={handleChange}
-              value={state.apartmentnumber}*/
+              onChange={handleChange}
+              value={state.apartment}
             />
           </div>
           <div className="signup-form-input">
@@ -41,20 +68,20 @@ const SignUp = () => {
               minLength="4"
               maxLength="25"
               required={true}
-              /*onChange={handleChange}
-              value={state.username}*/
+              onChange={handleChange}
+              value={state.username}
             />
           </div>
           <div className="signup-form-input">
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               minLength="4"
               maxLength="30"
               required={true}
-              /*onChange={handleChange}
-              value={state.password}*/
+              onChange={handleChange}
+              value={state.password}
             />
           </div>
           <div className="signup-form-input">

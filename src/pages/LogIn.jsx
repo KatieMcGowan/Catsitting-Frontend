@@ -63,7 +63,7 @@ const LogIn = (props) => {
           <div className="login-form-input">
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               minLength="4"
               maxLength="30"
