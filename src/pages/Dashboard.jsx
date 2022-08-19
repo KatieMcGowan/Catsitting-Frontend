@@ -5,16 +5,17 @@ import RequestsMadeContainer from "../components/RequestsMadeContainer";
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
-  let navigate = useNavigate();
   let user = props.user.user
-
+  
   const [state, setState] = useState({
     requestsmade: user.requested,
     requestsaccepted: user.accepted,
   });
+  
+  //AUTH CHECK
+  let navigate = useNavigate();
 
   const authCheck = () => {
-    console.log("Auth check hit")
     if (!props.auth.loggedIn) {
       navigate("/login")
     } else return;
@@ -25,6 +26,7 @@ const Dashboard = (props) => {
   })
 
 //BE SURE TO CHANGE NAV AT LANDING/LOG IN LEVEL TO NOT HAVE DASHBOARD ITEMS BECAUSE IT TRIPS UP STATE
+//WILL HAVE TO FIND A WAY TO DO AUTH CHECK OUTSIDE USEEFFECT IN CASE SOMEONE MANUALLY TYPES IN URL
 
   return(
     <div className="dashboard-wrapper">

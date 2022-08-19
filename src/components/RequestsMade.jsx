@@ -6,7 +6,7 @@ const RequestsMade = (props) => {
 
   for (let i = props.requestsmade.length - 1; i >= 0; i-- ) {
     sortedRequests.push(props.requestsmade[i])
-  }
+  };
 
   return(
     <div>

@@ -1,5 +1,5 @@
 const RequestMade = (props) => {
-  console.log(props);
+  console.log("Request made" + props);
   return(
     <p>Test</p>
   )

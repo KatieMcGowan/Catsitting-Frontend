@@ -2,7 +2,6 @@
 import RequestsMade from "./RequestsMade";
 
 const RequestsMadeContainer = (props) => {
-  console.log(props);
   return (
     <RequestsMade
       requestsmade={props.requestsmade}
