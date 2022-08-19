@@ -14,22 +14,23 @@ import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
 
 const App = () => {
-  //STATES
+  //AUTH STATES
   const [auth, setAuth] = useState({
     loggedIn: false,
-    userid: ""
   })
 
+  const [user, setUser] = useState({})
+
   //AUTH FUNCTION
-  const authSet = (boolean, id) => {
+  const authSet = (boolean, user) => {
     setAuth({
       loggedIn: boolean,
-      userid: id
+    });
+    setUser({
+      user
     });
   };
 
-  console.log(auth);
-  
   return (
     <div>
       <Header />
@@ -37,14 +38,14 @@ const App = () => {
         <Route exact path={"/"} element={<Landing />} />
         <Route path={"/login"} element={<LogIn authSet={authSet}/>} />
         <Route path={"/signup"} element={<SignUp />} />
-        <Route path={"/dashboard"} element={<Dashboard auth={auth}/>} />
-        <Route path={"/dashboard/:userid"} element={<Profile auth={auth}/>} />
-        <Route path={"/dashboard/:userid/:catid/edit"} element={<EditCat auth={auth}/>} />
-        <Route path={"/dashboard/:userid/addcat"} element={<AddCat auth={auth}/>} />
-        <Route path={"/dashboard/requests"} element={<AvailableRequests auth={auth}/>} />
-        <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth}/>} />
-        <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth}/>} />
-        <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth}/>} />
+        <Route path={"/dashboard"} element={<Dashboard auth={auth} user={user}/>} />
+        <Route path={"/dashboard/profile"} element={<Profile auth={auth} user={user}/>} />
+        <Route path={"/dashboard/:catid/edit"} element={<EditCat auth={auth} user={user}/>} />
+        <Route path={"/dashboard/addcat"} element={<AddCat auth={auth} user={user}/>} />
+        <Route path={"/dashboard/requests"} element={<AvailableRequests auth={auth} user={user}/>} />
+        <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} user={user}/>} />
+        <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} user={user}/>} />
+        <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} user={user}/>} />
       </Routes>
     </div>  
   );

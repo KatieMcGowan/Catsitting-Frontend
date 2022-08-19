@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import UserQuery from "../queries/UserQuery"
 import "./LogIn.css"
 
@@ -33,8 +33,8 @@ const LogIn = (props) => {
     event.preventDefault();
     for (let i = 0; i < users.users.length; i++ ){
       if (users.users[i].username === state.username && users.users[i].password === state.password) {
-        let userid = users.users[i]._id
-        props.authSet(true,userid)
+        let user = users.users[i]
+        props.authSet(true,user)
         navigate("/dashboard")
       };
     };
@@ -76,7 +76,7 @@ const LogIn = (props) => {
             <input type="submit" className="submit" value="Log In"/>
           </div>
         </form>
-        <p className="p-signup-link">Don't have an account with us? Click here to sign up!</p>
+        <Link to={"/signup"}><p className="p-signup-link">Don't have an account with us? Click here to sign up!</p></Link>
       </div>
     </div>
   );

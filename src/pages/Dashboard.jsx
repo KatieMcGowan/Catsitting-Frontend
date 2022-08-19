@@ -1,17 +1,45 @@
+import React, { useState, useEffect } from "react"
+import { useNavigate, Link } from "react-router-dom";
+import RequestsMadeContainer from "../components/RequestsMadeContainer";
+
 import "./Dashboard.css"
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  let navigate = useNavigate();
+  let user = props.user.user
+
+  const [state, setState] = useState({
+    requestsmade: user.requested,
+    requestsaccepted: user.accepted,
+  });
+
+  const authCheck = () => {
+    console.log("Auth check hit")
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+
+  useEffect(() => {
+    authCheck();
+  })
+
+//BE SURE TO CHANGE NAV AT LANDING/LOG IN LEVEL TO NOT HAVE DASHBOARD ITEMS BECAUSE IT TRIPS UP STATE
+
   return(
     <div className="dashboard-wrapper">
-      <h1>Welcome, Becky!</h1>
+      <h1>Welcome, {user.displayname}!</h1>
       <p className="p-view-requests">View your neighbor's catsitting requests</p>
       <div className="dashboard-items">
         <div className="pill-wrapper">
         <div className="requests-made-header">
           <p className="p-requests-dashboard">Requests Made</p>
-          <button>+</button>
+          <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
         </div>  
           <div className="requests-made-wrapper">
+            <RequestsMadeContainer
+              requestsmade={state.requestsmade}
+            />  
             <div className="requests-made-left">
               <p className="p-pills">November 10 - November 13</p>
             </div>
@@ -29,7 +57,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="pill-wrapper">
+        {/* <div className="pill-wrapper">
           <div className="requests-accepted-header">
             <p className="p-requests-dashboard">Requests Accepted</p>
           </div>  
@@ -51,7 +79,7 @@ const Dashboard = () => {
               <p className="p-pills">Apartment #133</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>     
     </div>
   )

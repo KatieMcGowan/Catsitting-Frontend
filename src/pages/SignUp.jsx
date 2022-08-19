@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import UserQuery from "../queries/UserQuery"
 import "./SignUp.css"
 
@@ -7,7 +7,7 @@ const SignUp = () => {
   let navigate = useNavigate();
 
   const [state, setState] = useState({
-    firstname: "",
+    displayname: "",
     apartment: "",
     username: "",
     password: "",
@@ -40,7 +40,7 @@ const SignUp = () => {
             <label htmlFor="firstname">First Name</label>
             <input
               type="text"
-              name="firstname"
+              name="displayname"
               minLength="1"
               maxLength="20"
               required={true}
@@ -88,7 +88,7 @@ const SignUp = () => {
             <input type="submit" className="submit" value="Create User"/>
           </div>
         </form>
-        <p className="p-login-link">Already have an account with us? Click here to log in!</p>
+        <Link to={"/login"}><p className="p-login-link">Already have an account with us? Click here to log in!</p></Link>
       </div>
     </div>
   );
