@@ -1,16 +1,29 @@
+import React, { useEffect, useState } from "react"
+import { Link, useResolvedPath } from "react-router-dom"
+import CatQuery from "../queries/CatQuery";
+import CatsContainer from "../components/CatsContainer";
 import "./Profile.css"
 
-const Profile = () => {
+const Profile = (props) => {
+  let user = props.user.user;
+
+  const [cats, setCats] = useState({
+    cats: user.cats
+  })
+
   return(
   <div className="profile-wrapper">
-      <h1>Becky @catgirl97</h1>
-      <p className="p-profile-apartment-number">Apartment #109</p>
+      <h1>{user.displayname} @{user.username}</h1>
+      <p className="p-profile-apartment-number">Apartment #{user.apartment}</p>
       <div className="your-cats-wrapper">
         <div className="your-cats-header">
           <p className="p-your-cats">Your Cats</p>
           <button>+</button>
         </div>  
-        <div className="your-cat-pill">
+        <CatsContainer
+          cats={cats}
+        />  
+        {/* <div className="your-cat-pill">
           <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>
@@ -40,7 +53,7 @@ const Profile = () => {
             </div>  
           </div>
           <div className="p-update-cat">Update cat info</div>
-        </div>
+        </div> */}
       </div>
     </div>  
   );  

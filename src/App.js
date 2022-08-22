@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import AddCat from "./pages/AddCat";
@@ -21,6 +21,15 @@ const App = () => {
 
   const [user, setUser] = useState({})
 
+  // const [cats, setCats] = useState([])
+
+  // const [requests, setRequests] = useState([])
+
+  //USEEFFECT
+  useEffect(() => {
+
+  })
+
   //AUTH FUNCTION
   const authSet = (boolean, user) => {
     setAuth({
@@ -31,6 +40,8 @@ const App = () => {
     });
   };
 
+  console.log(user);
+  
   return (
     <div>
       <Header />
@@ -41,7 +52,7 @@ const App = () => {
         <Route path={"/dashboard"} element={<Dashboard auth={auth} user={user}/>} />
         <Route path={"/dashboard/profile"} element={<Profile auth={auth} user={user}/>} />
         <Route path={"/dashboard/:catid/edit"} element={<EditCat auth={auth} user={user}/>} />
-        <Route path={"/dashboard/addcat"} element={<AddCat auth={auth} user={user}/>} />
+        <Route path={"/dashboard/addcat"} element={<AddCat auth={auth} user={user} authSet={authSet}/>} />
         <Route path={"/dashboard/requests"} element={<AvailableRequests auth={auth} user={user}/>} />
         <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} user={user}/>} />
         <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} user={user}/>} />

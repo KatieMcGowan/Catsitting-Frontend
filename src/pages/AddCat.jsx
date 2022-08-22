@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import Select from "react-select";
 import CatQuery from "../queries/CatQuery"
+// import UserQuery from "../queries/UserQuery";
 import "./AddCat.css";
 
 const AddCat = (props) => {
   let user = props.user.user;
-
   let navigate = useNavigate();
 
+  //CAT OBJECT STATE
   const [state, setState] = useState({
     catname: "",
     age: "",
