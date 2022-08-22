@@ -38,27 +38,27 @@ const Dashboard = (props) => {
           <p className="p-requests-dashboard">Requests Made</p>
           <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
         </div>  
-          <div className="requests-made-wrapper">
+          {/* <div className="requests-made-wrapper"> */}
             <RequestsMadeContainer
               requestsmade={state.requestsmade}
             />  
-            <div className="requests-made-left">
-              <p className="p-pills">November 10 - November 13</p>
+              {/* <div className="requests-made-left">
+                <p className="p-pills">November 10 - November 13</p>
+              </div>
+              <div className="requests-made-right">
+                <p className="p-pills">Accepted by Darryl</p>
+                <p className="p-pills">Apartment #303</p>
+              </div>
             </div>
-            <div className="requests-made-right">
-              <p className="p-pills">Accepted by Darryl</p>
-              <p className="p-pills">Apartment #303</p>
+            <div className="requests-made-wrapper">
+              <div className="requests-made-left">
+                <p className="p-pills">December 22 - December 23</p>
+              </div>
+              <div className="requests-made-right">
+                <p className="p-pills">Pending</p>
+              </div>
             </div>
-          </div>
-          <div className="requests-made-wrapper">
-            <div className="requests-made-left">
-              <p className="p-pills">December 22 - December 23</p>
-            </div>
-            <div className="requests-made-right">
-              <p className="p-pills">Pending</p>
-            </div>
-          </div>
-        </div>
+          </div> */}
         {/* <div className="pill-wrapper">
           <div className="requests-accepted-header">
             <p className="p-requests-dashboard">Requests Accepted</p>
@@ -82,6 +82,7 @@ const Dashboard = (props) => {
             </div>
           </div>
         </div> */}
+        </div>
       </div>     
     </div>
   )

@@ -11,9 +11,7 @@ const NewRequest = (props) => {
     end: "",
     accepted: false,
     creator: user._id,
-  })
-
-  console.log(state);
+  });
   
   const handleChange = (event) => {
     setState({
@@ -28,10 +26,11 @@ const NewRequest = (props) => {
     event.preventDefault();
     RequestQuery.create(state)
     .then(data => {
-      navigate("/")
+      navigate("/dashboard")
     })
   };
 
+  console.log(state);
 
   return(
     <div className="new-request-wrapper">
@@ -44,7 +43,7 @@ const NewRequest = (props) => {
           <div className="new-request-form-input">
             <label htmlFor="startdate">Start Date</label>
             <input
-              type="date"
+              type="datetime-local"
               name="start"
               required={true}
               onChange={handleChange}
@@ -54,7 +53,7 @@ const NewRequest = (props) => {
           <div className="new-request-form-input">  
           <label htmlFor="enddate">End Date</label>
             <input
-              type="date"
+              type="datetime-local"
               name="end"
               required={true}
               onChange={handleChange}

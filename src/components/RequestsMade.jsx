@@ -8,11 +8,13 @@ const RequestsMade = (props) => {
     sortedRequests.push(props.requestsmade[i])
   };
 
+  console.log(sortedRequests)
+
   return(
     <div>
-      {sortedRequests.map((requestmade) => {
+      {sortedRequests.map((requestmade, index) => {
         return  <RequestMade
-                  key={requestmade._id}
+                  key={index}
                   request={requestmade}
                 />
       })}

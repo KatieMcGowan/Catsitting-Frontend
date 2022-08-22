@@ -21,15 +21,6 @@ const App = () => {
 
   const [user, setUser] = useState({})
 
-  // const [cats, setCats] = useState([])
-
-  // const [requests, setRequests] = useState([])
-
-  //USEEFFECT
-  useEffect(() => {
-
-  })
-
   //AUTH FUNCTION
   const authSet = (boolean, user) => {
     setAuth({
@@ -39,7 +30,7 @@ const App = () => {
       user
     });
   };
-
+  
   console.log(user);
   
   return (
