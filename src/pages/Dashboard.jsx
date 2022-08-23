@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import RequestsMadeContainer from "../components/RequestsMadeContainer";
-
-import "./Dashboard.css"
+import RequestsAcceptedContainer from "../components/RequestsAcceptedContainer";
+import "./Dashboard.css";
 
 const Dashboard = (props) => {
   let user = props.user.user
   
   const [state, setState] = useState({
-    requestsmade: user.requested,
-    requestsaccepted: user.accepted,
+    requestsmade: "",
+    requestsaccepted: "",
   });
-  
+
   //AUTH CHECK
   let navigate = useNavigate();
 
@@ -23,10 +23,19 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     authCheck();
-  })
+    setState({
+      requestsmade: user.requested,
+      requestsaccepted: user.accepted,
+    })
+  }, []);
 
-//BE SURE TO CHANGE NAV AT LANDING/LOG IN LEVEL TO NOT HAVE DASHBOARD ITEMS BECAUSE IT TRIPS UP STATE
-//WILL HAVE TO FIND A WAY TO DO AUTH CHECK OUTSIDE USEEFFECT IN CASE SOMEONE MANUALLY TYPES IN URL
+  //if (user.requested.length === 0) {
+  //  <p className="no-requests">You haven't made any requests yet, click the + above to add a request!</p>
+  //}
+
+  //if (user.accepted.length === 0) {
+  //  <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests</p>   
+  //}
 
   return(
     <div className="dashboard-wrapper">
@@ -34,14 +43,17 @@ const Dashboard = (props) => {
       <p className="p-view-requests">View your neighbor's catsitting requests</p>
       <div className="dashboard-items">
         <div className="pill-wrapper">
-        <div className="requests-made-header">
-          <p className="p-requests-dashboard">Requests Made</p>
-          <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
-        </div>  
+          <div className="requests-made-header">
+            <p className="p-requests-dashboard">Requests Made</p>
+            <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
+          </div>  
           {/* <div className="requests-made-wrapper"> */}
-            <RequestsMadeContainer
-              requestsmade={state.requestsmade}
-            />  
+          <RequestsMadeContainer
+            requestsmade={state.requestsmade}
+          />  
+          {user.requested.length === 0 &&
+            <p className="no-requests">You haven't made any requests yet. Click the + above to add a request!</p>
+          }
               {/* <div className="requests-made-left">
                 <p className="p-pills">November 10 - November 13</p>
               </div>
@@ -59,11 +71,19 @@ const Dashboard = (props) => {
               </div>
             </div>
           </div> */}
-        {/* <div className="pill-wrapper">
+        </div>  
+        <div className="pill-wrapper">
           <div className="requests-accepted-header">
             <p className="p-requests-dashboard">Requests Accepted</p>
+            <Link to={"/dashboard/requests"}>Browse</Link>
           </div>  
-          <div className="requests-accepted-wrapper">
+          <RequestsAcceptedContainer
+            requestsaccepted={state.requestsaccepted}
+          />
+          {user.accepted.length === 0 &&
+            <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests!</p>  
+          }  
+          {/* <div className="requests-accepted-wrapper">
             <div className="requests-accepted-left">
               <p className="p-pills">September 2 - September 2</p>
             </div>
@@ -79,9 +99,7 @@ const Dashboard = (props) => {
             <div className="requests-accepted-right">
               <p className="p-pills">Posted by Lin</p>
               <p className="p-pills">Apartment #133</p>
-            </div>
-          </div>
-        </div> */}
+            </div> */}
         </div>
       </div>     
     </div>
@@ -89,3 +107,6 @@ const Dashboard = (props) => {
 }
 
 export default Dashboard;
+
+//Cannot import both requests made container and requests accepted container
+

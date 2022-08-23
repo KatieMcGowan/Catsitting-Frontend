@@ -43,6 +43,11 @@ button {
   padding: 5px;
 }
 
+.no-requests {
+  font-size: 12px;
+  text-align: center;
+}
+
 .requests-made-wrapper {
   background-color: paleturquoise;
   border: solid 3px skyblue;
@@ -99,6 +104,14 @@ button {
 
   .requests-accepted-header {
     max-width: 1200px;
+  }
+
+  .no-requests {
+    font-size: 16px;
+  }
+
+  .no-requests-hidden {
+    font-size: 16px;
   }
 
   .requests-made-wrapper {
