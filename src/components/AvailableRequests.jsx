@@ -39,6 +39,7 @@ const AvailableRequests = (props) => {
                   key={index}
                   request={availablerequest}
                   dateConversion={dateConversion}
+                  user={props.user}
                 />
       })}
     </div>  

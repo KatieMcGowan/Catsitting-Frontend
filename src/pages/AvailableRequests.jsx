@@ -3,7 +3,7 @@ import RequestQuery from "../queries/RequestQuery"
 import AvailableRequestsContainer from "../components/AvailableRequestsContainer";
 import "./AvailableRequests.css"
 
-const AvailableRequests = () => {
+const AvailableRequests = (props) => {
   const [availableRequests, setAvailableRequests] = useState([]);
 
   useEffect(() => {
@@ -23,8 +23,10 @@ const AvailableRequests = () => {
     <div className="available-requests-wrapper">
       <h1 className="available-requests-header">Available Requests</h1>
       <div className="requests-available">
-        <div className="your-cat-pill">
-            {availableRequests.length === 0 ? <p className="no-requests">No available requests</p> : <AvailableRequestsContainer availablerequests={availableRequests} />}  
+        {/* <div className="your-cat-pill"> */}
+        {availableRequests.length === 0 
+            ? <p className="no-requests">No available requests</p> 
+            : <AvailableRequestsContainer availablerequests={availableRequests} user={props.user}/>}  
           {/* <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>
@@ -53,11 +55,15 @@ const AvailableRequests = () => {
               </div>
             </div>  
           </div> */}
-          <div className="p-accept-request">Accept Request</div>
-        </div>
+          {/* <div className="p-accept-request">Accept Request</div>
+        </div> */}
       </div>
     </div>
   )
 }
 
 export default AvailableRequests;
+
+//Functionality around "Accept Request"
+//Changes request object to accepted: true, catsitter: loggedinuserid
+//Redirects to dashboard 

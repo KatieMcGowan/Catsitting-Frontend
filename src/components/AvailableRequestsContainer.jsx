@@ -4,6 +4,7 @@ const AvailableRequestsContainer = (props) => {
   return (
     <AvailableRequests
       availablerequests={props.availablerequests}
+      user={props.user}
     />  
   )
 };

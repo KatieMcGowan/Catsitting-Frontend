@@ -26,6 +26,10 @@
   margin: 10px 0;
 }
 
+.p-accept-request:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 600px) {
   .individual-request-wrapper {
     max-width: 1200px;
