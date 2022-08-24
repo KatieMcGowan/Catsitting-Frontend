@@ -59,3 +59,4 @@ export default App;
 //>CSS formatting on pages
 //>User auth not disappearing on refresh
 //>Once an object is created, it not populating on redirected page
+//>When cat object is deleted, profile populates an empty pill until user is logged out

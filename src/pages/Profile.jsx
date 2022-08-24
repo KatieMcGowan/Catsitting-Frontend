@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import CatsContainer from "../components/CatsContainer";
 import "./Profile.css"
 
@@ -16,7 +17,7 @@ const Profile = (props) => {
       <div className="your-cats-wrapper">
         <div className="your-cats-header">
           <p className="p-your-cats">Your Cats</p>
-          <button>+</button>
+          <Link to={"/dashboard/addcat"} className="addbutton">+</Link>
         </div>  
         <CatsContainer
           cats={cats}

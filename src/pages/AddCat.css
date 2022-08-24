@@ -49,6 +49,10 @@ label {
   text-align: center;
 }
 
+.remove-cat:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 850px) {
   .add-cat-header {
     font-size: 32px;

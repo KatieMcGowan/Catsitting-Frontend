@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 import CatQuery from "../queries/CatQuery";
 
 const Cat = (props) => {
@@ -16,12 +17,13 @@ const Cat = (props) => {
     CatQuery.show(props.cat)
     .then(cat => setCatObject({
       catname: cat.catname,
-      catage: cat.age,
-      catbreed: cat.breed,
+      age: cat.age,
+      breed: cat.breed,
       feeding: cat.feeding,
       personality: cat.personality,
       medication: cat.medication,
       additionalnotes: cat.additionalnotes,
+      id: cat._id,
     }))
   }, []);
   
@@ -54,7 +56,7 @@ const Cat = (props) => {
           </div>
         </div>  
       </div>
-      <div className="p-update-cat">Update cat info</div>
+      <Link to={`/dashboard/${catObject.id}/edit`} className="p-update-cat">Update cat info</Link>
     </div>  
   );
 };

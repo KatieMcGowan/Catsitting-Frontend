@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import Select from "react-select";
 import CatQuery from "../queries/CatQuery"
-// import UserQuery from "../queries/UserQuery";
 import "./AddCat.css";
 
 const AddCat = (props) => {

@@ -1,18 +1,79 @@
-import Select from "react-select"
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import CatQuery from "../queries/CatQuery"
+// import Select from "react-select"
 import "./AddCat.css"
 
 const EditCat = () => {
+  let navigate = useNavigate();
+  let catid = useParams().catid
 
-  const options = [
-    {value: "friendly", label: "Friendly"},
-    {value: "shy", label: "Shy"},
-    {value: "playful", label: "Playful"},
-  ];
+  //CAT OBJECT STATE
+  const [catObject, setCatObject] = useState({
+    catname: "",
+    age: "",
+    breed: "",
+    feeding: "",
+    personality: [],
+    medication: [],
+    additionalnotes: [],
+  });
+
+  useEffect(() => {
+    CatQuery.show(catid)
+    .then(cat => setCatObject({
+      catname: cat.catname,
+      age: cat.age,
+      breed: cat.breed,
+      feeding: cat.feeding,
+      personality: cat.personality,
+      medication: cat.medication,
+      additionalnotes: cat.additionalnotes,
+    }))
+  }, []);
+
+  const [newCatObject, setNewCatObject] = useState({
+    catname: "",
+    age: "",
+    breed: "",
+    feeding: "",
+    personality: [],
+    medication: [],
+    additionalnotes: [],
+  });
+
+  const handleChange = (event) => {
+    setNewCatObject({
+      ...newCatObject,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    CatQuery.update(catid, newCatObject)
+    .then(data => {
+      navigate("/dashboard/profile")
+    })
+  };
+
+  const handleDelete = () => {
+    CatQuery.delete(catid)
+    .then(data => {
+      navigate("/dashboard")
+    })
+  }
+
+  // const options = [
+  //   {value: "friendly", label: "Friendly"},
+  //   {value: "shy", label: "Shy"},
+  //   {value: "playful", label: "Playful"},
+  // ];
 
   return(
     <div>
       <h1 className="add-cat-header">Edit Your Cat's Information</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="add-cat-wrapper">
           <div className="about-your-cat">
             <h1 className="about-your-cat-header">About Your Cat</h1>
@@ -20,13 +81,13 @@ const EditCat = () => {
               <label htmlFor="name">Name</label>
               <input
                 type="text"
-                name="name"
-                /*placeholder={}*/
+                name="catname"
+                placeholder={catObject.catname}
                 minLength="1"
                 maxLength="20"
                 required={true}
-                /*onChange={handleChange}
-                value={state.name}*/
+                onChange={handleChange}
+                value={newCatObject.catname}
               />
             </div>
             <div className="new-cat-form-input">
@@ -34,12 +95,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="age"
-                /*placeholder={}*/
+                placeholder={catObject.age}
                 minLength="1"
                 maxLength="2"
                 required={true}
-                /*onChange={handleChange}
-                value={state.age}*/
+                onChange={handleChange}
+                value={newCatObject.age}
               />
             </div>
             <div className="new-cat-form-input">
@@ -47,22 +108,22 @@ const EditCat = () => {
               <input
                 type="text"
                 name="breed"
-                /*placeholder={}*/
+                placeholder={catObject.breed}
                 minLength="4"
                 maxLength="25"
                 required={true}
-                /*onChange={handleChange}
-                value={state.breed}*/
+                onChange={handleChange}
+                value={newCatObject.breed}
               />
             </div>
             <div className="new-cat-form-input">
               <label htmlFor="personality">Personality (select up to three)</label>
-              <Select 
+              {/* <Select 
                 options={options}
                 name="personality"
-                /*onChange={handleChange}
-                value={state.personality}*/
-              />
+                onChange={handleChange}
+                value={state.personality}
+              /> */}
             </div>
           </div>
           <div className="care-instructions">
@@ -72,12 +133,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="feeding"
-                /*placeholder={}*/
+                placeholder={catObject.feeding}
                 minLength="1"
                 maxLength="100"
                 required={true}
-                /*onChange={handleChange}
-                value={state.breed}*/
+                onChange={handleChange}
+                value={newCatObject.feeding}
               />
             </div>
             <div className="new-cat-form-input">
@@ -85,12 +146,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="medication"
-                /*placeholder={}*/
+                placeholder={catObject.medication}
                 minLength="0"
                 maxLength="100"
                 required={false}
-                /*onChange={handleChange}
-                value={state.breed}*/
+                onChange={handleChange}
+                value={newCatObject.medication}
               /> 
             </div>
             <div className="new-cat-form-input">
@@ -98,12 +159,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="additionalnotes"
-                /*placeholder={}*/
+                placeholder={catObject.additionalnotes}
                 minLength="0"
                 maxLength="100"
                 required={false}
-                /*onChange={handleChange}
-                value={state.breed}*/
+                onChange={handleChange}
+                value={newCatObject.additionalnotes}
               /> 
             </div> 
           </div>
@@ -112,7 +173,7 @@ const EditCat = () => {
           <input type="submit" className="submit" value="Edit Cat"/>
         </div>
       </form>
-      <p className="remove-cat">Remove your cat's information</p>  
+      <p className="remove-cat" onClick={() => handleDelete()}>Remove your cat's information</p>  
     </div>
   )
 }
