@@ -25,7 +25,7 @@ const AvailableRequests = () => {
       <div className="requests-available">
         <div className="your-cat-pill">
             {availableRequests.length === 0 ? <p className="no-requests">No available requests</p> : <AvailableRequestsContainer availablerequests={availableRequests} />}  
-          <div className="cat-info">
+          {/* <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>
               <div className="cats-left">
@@ -52,7 +52,7 @@ const AvailableRequests = () => {
                 </div>  
               </div>
             </div>  
-          </div>
+          </div> */}
           <div className="p-accept-request">Accept Request</div>
         </div>
       </div>

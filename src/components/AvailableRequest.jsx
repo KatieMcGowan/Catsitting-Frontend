@@ -10,18 +10,18 @@ const AvailableRequest = (props) => {
 
   const [user, setUser] = useState({
     creator: "",
-    apartment: ""
+    apartment: "",
+    cats: []
   });
 
   useEffect(() => {
     UserQuery.show(props.request.creator)
-    .then(user =>  console.log(user))
+    .then(user => setUser({
+      creator: user.displayname,
+      apartment: user.apartment,
+      cats: user.cats,
+    }));
   }, [])
-
-  console.log(props)
-
-  //How am I supposed to approach multiple cat objects? 
-  //Make a cat component and map ids
 
   return (
     <div className="individual-request-wrapper">
@@ -30,9 +30,15 @@ const AvailableRequest = (props) => {
         <p className="p-pills">{schedule.end}</p>
       </div>
       <div className="requests-made-right">
-        <p className="p-pills">Posted by: Paul</p>
-        <p className="p-pills">Apartment #303</p>
+        <p className="p-pills">Posted by: {user.creator}</p>
+        <p className="p-pills">Apartment #{user.apartment}</p>
       </div>
+      {user.cats.map((cat, index) => {
+        return  <AvailableRequestCat
+                  key={index}
+                  cat={cat}
+                />
+      })}
     </div>
   )
 }
