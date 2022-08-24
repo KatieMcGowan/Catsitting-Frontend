@@ -1,20 +1,30 @@
+import React, { useState, useEffect } from "react";
+import RequestQuery from "../queries/RequestQuery"
+import AvailableRequestsContainer from "../components/AvailableRequestsContainer";
 import "./AvailableRequests.css"
 
 const AvailableRequests = () => {
+  const [availableRequests, setAvailableRequests] = useState([]);
+
+  useEffect(() => {
+    let available = []
+    RequestQuery.all()
+    .then(requests => {
+      for (let i = 0; i < requests.length; i++) {
+        if (requests[i].accepted === false) {
+          available.push(requests[i])
+        }
+      }
+    })
+    .then(() => setAvailableRequests(available))
+  }, []);
+
   return(
     <div className="available-requests-wrapper">
       <h1 className="available-requests-header">Available Requests</h1>
       <div className="requests-available">
         <div className="your-cat-pill">
-          <div className="individual-request-wrapper">
-            <div className="requests-made-left">
-                <p className="p-pills">November 10 - November 13</p>
-              </div>
-              <div className="requests-made-right">
-                <p className="p-pills">Posted by: Paul</p>
-                <p className="p-pills">Apartment #303</p>
-              </div>
-            </div>
+            {availableRequests.length === 0 ? <p className="no-requests">No available requests</p> : <AvailableRequestsContainer availablerequests={availableRequests} />}  
           <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>

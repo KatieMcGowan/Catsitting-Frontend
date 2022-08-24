@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import AddCat from "./pages/AddCat";
@@ -32,7 +32,7 @@ const App = () => {
   };
   
   console.log(user);
-  
+
   return (
     <div>
       <Header />
@@ -54,3 +54,8 @@ const App = () => {
 }
 
 export default App;
+
+//MASTER LIST OF THINGS TO CLEAN UP:
+//>CSS formatting on pages
+//>User auth not disappearing on refresh
+//>Once an object is created, it not populating on redirected page

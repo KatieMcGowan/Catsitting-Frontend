@@ -30,8 +30,6 @@ const NewRequest = (props) => {
     })
   };
 
-  console.log(state);
-
   return(
     <div className="new-request-wrapper">
       <div className="new-request-header">

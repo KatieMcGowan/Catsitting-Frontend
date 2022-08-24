@@ -29,14 +29,6 @@ const Dashboard = (props) => {
     })
   }, []);
 
-  //if (user.requested.length === 0) {
-  //  <p className="no-requests">You haven't made any requests yet, click the + above to add a request!</p>
-  //}
-
-  //if (user.accepted.length === 0) {
-  //  <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests</p>   
-  //}
-
   return(
     <div className="dashboard-wrapper">
       <h1>Welcome, {user.displayname}!</h1>
@@ -103,10 +95,8 @@ const Dashboard = (props) => {
         </div>
       </div>     
     </div>
-  )
-}
+  );
+};
 
 export default Dashboard;
-
-//Cannot import both requests made container and requests accepted container
 

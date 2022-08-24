@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react"
-import { Link, useResolvedPath } from "react-router-dom"
-import CatQuery from "../queries/CatQuery";
+import React, { useState } from "react"
 import CatsContainer from "../components/CatsContainer";
 import "./Profile.css"
 

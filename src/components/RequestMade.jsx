@@ -46,8 +46,11 @@ const RequestMade = (props) => {
         <p className="p-pills">{requestMadeObject.end}</p>
       </div>
       <div className="requests-made-right">
-        <p className="p-pills">Accepted by Darryl</p>
-        <p className="p-pills">Apartment #303</p>
+        {requestMadeObject.accepted === false &&
+          <p className="p-pills">Pending</p>
+        }
+        {/* <p className="p-pills">Accepted by Darryl</p>
+        <p className="p-pills">Apartment #303</p> */}
       </div>
     </div>
   )
