@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import RequestQuery from "../queries/RequestQuery";
+import UserQuery from "../queries/UserQuery";
 
 const RequestAccepted = (props) => {
-
-  const [requestAcceptedObject, setRequestAcceptedObject] = useState({
+  const [requestAccepted, setRequestAccepted] = useState({
     start: "",
     end: "",
-    accepted: "",
+    creator: "",
+    creatordisplayname: "",
+    apartment: "",
   });
 
   const dateConversion = (datestring) => {
@@ -33,23 +35,28 @@ const RequestAccepted = (props) => {
 
   useEffect(() => {
     RequestQuery.show(props.request)
-    .then(requestaccepted => setRequestAcceptedObject({
-      start: dateConversion(requestaccepted.start),
-      end: dateConversion(requestaccepted.end),
-      accepted: requestaccepted.accepted
-    }));
-  }, []);
-
+    .then(requestaccepted => {
+      UserQuery.show(requestaccepted.creator)
+        .then(creator => {
+          setRequestAccepted({
+            start: dateConversion(requestaccepted.start),
+            end: dateConversion(requestaccepted.end),
+            creatordisplayname: creator.displayname,
+            apartment: creator.apartment,
+          })
+        })
+      })
+    }, []);    
 
   return(
     <div className="requests-accepted-wrapper">
       <div className="requests-accepted-left">
-        <p className="p-pills">{requestAcceptedObject.start}</p>
-        <p className="p-pills">{requestAcceptedObject.start}</p>
+        <p className="p-pills">{requestAccepted.start}</p>
+        <p className="p-pills">{requestAccepted.end}</p>
       </div>
       <div className="requests-accepted-right">
-        <p className="p-pills">Posted by Ken</p>
-        <p className="p-pills">Apartment #213</p>
+        <p className="p-pills">Posted by {requestAccepted.creatordisplayname}</p>
+        <p className="p-pills">Apartment #{requestAccepted.apartment}</p>
       </div>
     </div>  
   )

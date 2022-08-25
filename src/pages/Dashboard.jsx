@@ -40,12 +40,18 @@ const Dashboard = (props) => {
             <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
           </div>  
           {/* <div className="requests-made-wrapper"> */}
-          <RequestsMadeContainer
+          {user.requested.length === 0 
+            ? <p className="no-requests">You haven't made any requests yet. Click the + above to add a request!</p>
+            : <RequestsMadeContainer
+                requestsmade={state.requestsmade}
+              />  
+          }
+          {/* <RequestsMadeContainer
             requestsmade={state.requestsmade}
           />  
           {user.requested.length === 0 &&
-            <p className="no-requests">You haven't made any requests yet. Click the + above to add a request!</p>
-          }
+            nodem
+          } */}
               {/* <div className="requests-made-left">
                 <p className="p-pills">November 10 - November 13</p>
               </div>
@@ -69,12 +75,12 @@ const Dashboard = (props) => {
             <p className="p-requests-dashboard">Requests Accepted</p>
             <Link to={"/dashboard/requests"}>Browse</Link>
           </div>  
-          <RequestsAcceptedContainer
-            requestsaccepted={state.requestsaccepted}
-          />
-          {user.accepted.length === 0 &&
-            <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests!</p>  
-          }  
+          {user.accepted.length === 0 
+            ? <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests!</p>
+            : <RequestsAcceptedContainer
+                requestsaccepted={state.requestsaccepted}
+              />  
+          }
           {/* <div className="requests-accepted-wrapper">
             <div className="requests-accepted-left">
               <p className="p-pills">September 2 - September 2</p>

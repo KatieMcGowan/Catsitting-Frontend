@@ -3,17 +3,14 @@ import RequestQuery from "../queries/RequestQuery";
 import UserQuery from "../queries/UserQuery"
 
 const RequestMade = (props) => {
-  const [requestMadeObject, setRequestMadeObject] = useState({
+  const [requestMade, setRequestMade] = useState({
     start: "",
     end: "",
     accepted: "",
     catsitter: "",
+    catsitterdisplayname: "",
+    apartment: "",
   });
-
-  const [catsitter, setCatsitter] = useState({
-    displayname: "",
-    apartment: ""
-  })
 
   const dateConversion = (datestring) => {
     let dateDate = new Date (datestring)
@@ -39,40 +36,43 @@ const RequestMade = (props) => {
 
   useEffect(() => {
     RequestQuery.show(props.request)
-    .then(requestmade => setRequestMadeObject({
-      start: dateConversion(requestmade.start),
-      end: dateConversion(requestmade.end),
-      accepted: requestmade.accepted,
-      catsitter: requestmade.catsitter
-    }));
-    if (requestMadeObject.accepted === true) {
-      UserQuery.show(requestMadeObject.catsitter)
-      .then(catsitter => {
-        setCatsitter({
-          displayname: catsitter.displayname,
-          apartment: catsitter.apartment
+    .then(requestmade => {
+      if(requestmade.accepted === true) {
+        UserQuery.show(requestmade.catsitter)
+        .then(catsitter => {
+          setRequestMade({
+            start: dateConversion(requestmade.start),
+            end: dateConversion(requestmade.end),
+            accepted: requestmade.accepted,
+            catsitter: requestmade.catsitter,
+            catsitterdisplayname: catsitter.displayname,
+            apartment: catsitter.apartment
+          })
         })
-      })
-    }
-  }, []);
+      } else {
+        setRequestMade({
+          start: dateConversion(requestmade.start),
+          end: dateConversion(requestmade.end),
+          accepted: requestmade.accepted
+        })
+      }  
+    })}, []);
 
-  return(
+    return(
     <div className="requests-made-wrapper">
       <div className="requests-made-left">
-        <p className="p-pills">{requestMadeObject.start}</p>
-        <p className="p-pills">{requestMadeObject.end}</p>
+        <p className="p-pills">{requestMade.start}</p>
+        <p className="p-pills">{requestMade.end}</p>
       </div>
-      {/* <div className="requests-made-right"> */}
-        {requestMadeObject.accepted === false
+        {requestMade.accepted === false
           ? <div className="requests-made-right">
               <p className="p-pills">Pending</p>
             </div>  
           : <div className="requests-made-right">
-              <p className="p-pills">Accepted by {catsitter.displayname}</p>
-              <p className="p-pills">Apartment #{catsitter.apartment}</p>
+              <p className="p-pills">Accepted by {requestMade.catsitterdisplayname}</p>
+              <p className="p-pills">Apartment #{requestMade.apartment}</p>
             </div>   
         }
-      {/* </div> */}
     </div>
   )
 }

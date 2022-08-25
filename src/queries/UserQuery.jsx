@@ -35,7 +35,6 @@ class UserQuery {
       body: JSON.stringify(userData)
     })
     .then(response => response.json())
-    .then (jsonData => {})
   };
 
 };
