@@ -4,6 +4,7 @@ import RequestQuery from "../queries/RequestQuery"
 import "./NewRequest.css"
 
 const NewRequest = (props) => {
+  let navigate = useNavigate();
   let user = props.user.user
 
   const [state, setState] = useState({
@@ -19,8 +20,6 @@ const NewRequest = (props) => {
       [event.target.name]: event.target.value
     });
   };
-  
-  let navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();

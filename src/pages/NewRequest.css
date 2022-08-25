@@ -27,6 +27,14 @@
   text-align: center;
 }
 
+.submit:hover {
+  cursor: pointer;
+}
+
+.delete-request:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 600px) {
   .p-new-request {
     font-size: 16px;

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate  } from "react-router-dom"
 import UserQuery from "../queries/UserQuery";
 import RequestQuery from "../queries/RequestQuery";
+import RequestShowCat from "./RequestShowCat";
 
 const RequestShowComponent = (props) => {
   let navigate = useNavigate();
-
-  //REQUEST STATES FOR DISPLAY
+  
+  //REQUEST STATE FOR DISPLAY
   const [request, setRequest] = useState({
     start: "",
     end: "",
@@ -16,7 +17,14 @@ const RequestShowComponent = (props) => {
     catsitterdisplayname: "",
     catsitterapartment: "",
     accepted: "",
+    cats: "",
   });
+
+  //REQUEST STATE FOR CATSITTER CANCEL (UPDATES REQUEST OBJECT)
+  const [updatedRequest, setUpdatedRequest] = useState({
+    accepted: false,
+    catsitter: ""
+  })
   
   const dateConversion = (datestring) => {
     let dateDate = new Date (datestring)
@@ -49,6 +57,7 @@ const RequestShowComponent = (props) => {
           end: dateConversion(request.end),
           creatorid: props.userId,
           accepted: false,
+          cats: props.userCats,
         })
       } else if (request.creator === props.userId && request.accepted === true) {
           UserQuery.show(request.catsitter)
@@ -60,6 +69,7 @@ const RequestShowComponent = (props) => {
               catsitterdisplayname: catsitter.displayname,
               catsitterapartment: catsitter.apartment,
               accepted: true,
+              cats: props.userCats
             })
           })  
       } else {
@@ -72,16 +82,27 @@ const RequestShowComponent = (props) => {
             creatordisplayname: creator.displayname,
             creatorapartment: creator.apartment,
             accepted: true,
+            cats: creator.cats
           })
         })
       }
     })
   }, [])
 
+  //FUNCTIONS FOR USER INTERACTION WITH REQUEST OBJECT
+  const redirectToEdit = () => {
+    navigate(`/dashboard/requests/${props.requestId}/edit`)
+  };
+
+  const cancelCatsitting = () => {
+    RequestQuery.update(props.requestId, updatedRequest)
+    .then(data => {
+      navigate("/dashboard")
+    });
+  };
+
   let creatorCatsitterSame = (props.userId === request.creatorid)
-
-  console.log(creatorCatsitterSame);
-
+  
   return (
     <div className="your-cat-pill">
       <div className="individual-request-wrapper">
@@ -105,14 +126,19 @@ const RequestShowComponent = (props) => {
             <p className="p-pills">Posted by: {request.creatordisplayname}</p>
             <p className="p-pills">Apartment #{request.creatorapartment}</p>
           </div>
-        }  
-        {/* {requester.cats.map((cat, index) => {
-          return  <AvailableRequestCat
+        } 
+      <div className="cat-info"> 
+        {/* {request.cats.map((cat, index) => {
+          return  <RequestShowCat
                     key={index}
                     cat={cat}
                   />
-        })} */}
-        {/* <p className="p-accept-request">Accept Request</p> */}
+        })}  */}
+      </div>
+        {creatorCatsitterSame 
+        ? <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
+        : <p className="p-accept-request" onClick={() => cancelCatsitting()}>Cancel Catsitting</p>
+        }
       </div>
     </div>
   )

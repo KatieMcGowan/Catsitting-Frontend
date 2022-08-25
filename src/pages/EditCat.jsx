@@ -6,10 +6,9 @@ import "./AddCat.css"
 
 const EditCat = () => {
   let navigate = useNavigate();
-  let catid = useParams().catid
+  let catId = useParams().catid
 
-  //CAT OBJECT STATE
-  const [catObject, setCatObject] = useState({
+  const [cat, setCat] = useState({
     catname: "",
     age: "",
     breed: "",
@@ -19,9 +18,10 @@ const EditCat = () => {
     additionalnotes: [],
   });
 
+  //POPULATES FORM PLACEHOLDERS
   useEffect(() => {
-    CatQuery.show(catid)
-    .then(cat => setCatObject({
+    CatQuery.show(catId)
+    .then(cat => setCat({
       catname: cat.catname,
       age: cat.age,
       breed: cat.breed,
@@ -32,7 +32,7 @@ const EditCat = () => {
     }))
   }, []);
 
-  const [newCatObject, setNewCatObject] = useState({
+  const [updatedCat, setUpdatedCat] = useState({
     catname: "",
     age: "",
     breed: "",
@@ -43,22 +43,22 @@ const EditCat = () => {
   });
 
   const handleChange = (event) => {
-    setNewCatObject({
-      ...newCatObject,
+    setUpdatedCat({
+      ...updatedCat,
       [event.target.name]: event.target.value
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    CatQuery.update(catid, newCatObject)
+    CatQuery.update(catId, updatedCat)
     .then(data => {
       navigate("/dashboard/profile")
     })
   };
 
   const handleDelete = () => {
-    CatQuery.delete(catid)
+    CatQuery.delete(catId)
     .then(data => {
       navigate("/dashboard")
     })
@@ -82,12 +82,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="catname"
-                placeholder={catObject.catname}
+                placeholder={cat.catname}
                 minLength="1"
                 maxLength="20"
                 required={true}
                 onChange={handleChange}
-                value={newCatObject.catname}
+                value={updatedCat.catname}
               />
             </div>
             <div className="new-cat-form-input">
@@ -95,12 +95,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="age"
-                placeholder={catObject.age}
+                placeholder={cat.age}
                 minLength="1"
                 maxLength="2"
                 required={true}
                 onChange={handleChange}
-                value={newCatObject.age}
+                value={updatedCat.age}
               />
             </div>
             <div className="new-cat-form-input">
@@ -108,12 +108,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="breed"
-                placeholder={catObject.breed}
+                placeholder={cat.breed}
                 minLength="4"
                 maxLength="25"
                 required={true}
                 onChange={handleChange}
-                value={newCatObject.breed}
+                value={updatedCat.breed}
               />
             </div>
             <div className="new-cat-form-input">
@@ -133,12 +133,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="feeding"
-                placeholder={catObject.feeding}
+                placeholder={cat.feeding}
                 minLength="1"
                 maxLength="100"
                 required={true}
                 onChange={handleChange}
-                value={newCatObject.feeding}
+                value={updatedCat.feeding}
               />
             </div>
             <div className="new-cat-form-input">
@@ -146,12 +146,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="medication"
-                placeholder={catObject.medication}
+                placeholder={cat.medication}
                 minLength="0"
                 maxLength="100"
                 required={false}
                 onChange={handleChange}
-                value={newCatObject.medication}
+                value={updatedCat.medication}
               /> 
             </div>
             <div className="new-cat-form-input">
@@ -159,12 +159,12 @@ const EditCat = () => {
               <input
                 type="text"
                 name="additionalnotes"
-                placeholder={catObject.additionalnotes}
+                placeholder={cat.additionalnotes}
                 minLength="0"
                 maxLength="100"
                 required={false}
                 onChange={handleChange}
-                value={newCatObject.additionalnotes}
+                value={updatedCat.additionalnotes}
               /> 
             </div> 
           </div>

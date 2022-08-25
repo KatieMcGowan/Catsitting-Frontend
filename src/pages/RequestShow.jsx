@@ -5,7 +5,7 @@ import "./RequestShow.css"
 const RequestShow = (props) => {
   let requestId = useParams().requestid
   let user = props.user.user;
-  
+
   return(
     <div className="request-show-wrapper">
       <h1 className="requests-show-header">Request Details</h1>
@@ -13,6 +13,7 @@ const RequestShow = (props) => {
         <RequestShowComponent
           requestId={requestId}
           userId={user._id}
+          userCats={user.cats}
         />
       </div>  
     </div>

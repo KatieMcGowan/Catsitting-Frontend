@@ -33,6 +33,29 @@ const App = () => {
   
   console.log(user);
 
+  //DATE CONVERSION FUNCTIONs
+  const dateConversion = (datestring) => {
+    let dateDate = new Date (datestring)
+    let ampm = "AM"
+    let month = (dateDate.getMonth() + 1).toString();
+    let date = dateDate.getDate().toString();
+    let hours = dateDate.getHours();
+    let minutes = dateDate.getMinutes()
+    if (minutes < 10) {
+      minutes = "0" + minutes
+    };
+    if (hours === 12) {
+      hours = hours.toString()
+      ampm = "PM"
+    } else if (hours > 12) {
+      hours = hours - 12;
+      ampm = "PM"
+    } else {
+      hours = hours.toString()
+    }
+    return (month + "/" + date + " @" + hours + ":" + minutes + ampm)
+  };
+
   return (
     <div>
       <Header />
@@ -61,3 +84,5 @@ export default App;
 //>Once an object is created, it not populating on redirected page
 //>When cat object is deleted, profile populates an empty pill until user is logged out
 //>On dashboard, "accepted by" info does not populate until page refreshes
+//>Put date conversion at top (app level) and pass down as props to declutter child pages/components
+//>Get placeholder start/end times to work for edit request page
