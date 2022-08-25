@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestQuery from "../queries/RequestQuery";
 import UserQuery from "../queries/UserQuery"
 
@@ -7,7 +8,6 @@ const RequestMade = (props) => {
     start: "",
     end: "",
     accepted: "",
-    catsitter: "",
     catsitterdisplayname: "",
     apartment: "",
   });
@@ -58,8 +58,14 @@ const RequestMade = (props) => {
       }  
     })}, []);
 
+    let navigate = useNavigate();
+
+    const handleRequestClick = () => {
+      navigate(`/dashboard/requests/${props.request}`)
+    };
+
     return(
-    <div className="requests-made-wrapper">
+    <div className="requests-made-wrapper" onClick={() => handleRequestClick()}>
       <div className="requests-made-left">
         <p className="p-pills">{requestMade.start}</p>
         <p className="p-pills">{requestMade.end}</p>

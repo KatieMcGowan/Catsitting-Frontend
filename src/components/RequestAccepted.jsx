@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestQuery from "../queries/RequestQuery";
 import UserQuery from "../queries/UserQuery";
 
@@ -6,7 +7,6 @@ const RequestAccepted = (props) => {
   const [requestAccepted, setRequestAccepted] = useState({
     start: "",
     end: "",
-    creator: "",
     creatordisplayname: "",
     apartment: "",
   });
@@ -48,8 +48,14 @@ const RequestAccepted = (props) => {
       })
     }, []);    
 
+    let navigate = useNavigate();
+
+    const handleRequestClick = () => {
+      navigate(`/dashboard/requests/${props.request}`)
+    };
+
   return(
-    <div className="requests-accepted-wrapper">
+    <div className="requests-accepted-wrapper" onClick={() => handleRequestClick()}>
       <div className="requests-accepted-left">
         <p className="p-pills">{requestAccepted.start}</p>
         <p className="p-pills">{requestAccepted.end}</p>
