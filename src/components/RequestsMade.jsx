@@ -10,7 +10,7 @@ const RequestsMade = (props) => {
   };
   
   return(
-    <div>
+    <div className="pill-wrapper">
       {sortedRequestsMade.map((requestmade, index) => {
         return  <RequestMade
                   key={index}

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import RequestQuery from "../queries/RequestQuery";
+import UserQuery from "../queries/UserQuery"
 
 const RequestMade = (props) => {
   const [requestMadeObject, setRequestMadeObject] = useState({
     start: "",
     end: "",
     accepted: "",
+    catsitter: "",
   });
+
+  const [catsitter, setCatsitter] = useState({
+    displayname: "",
+    apartment: ""
+  })
 
   const dateConversion = (datestring) => {
     let dateDate = new Date (datestring)
@@ -35,8 +42,18 @@ const RequestMade = (props) => {
     .then(requestmade => setRequestMadeObject({
       start: dateConversion(requestmade.start),
       end: dateConversion(requestmade.end),
-      accepted: requestmade.accepted
+      accepted: requestmade.accepted,
+      catsitter: requestmade.catsitter
     }));
+    if (requestMadeObject.accepted === true) {
+      UserQuery.show(requestMadeObject.catsitter)
+      .then(catsitter => {
+        setCatsitter({
+          displayname: catsitter.displayname,
+          apartment: catsitter.apartment
+        })
+      })
+    }
   }, []);
 
   return(
@@ -45,15 +62,19 @@ const RequestMade = (props) => {
         <p className="p-pills">{requestMadeObject.start}</p>
         <p className="p-pills">{requestMadeObject.end}</p>
       </div>
-      <div className="requests-made-right">
-        {requestMadeObject.accepted === false &&
-          <p className="p-pills">Pending</p>
+      {/* <div className="requests-made-right"> */}
+        {requestMadeObject.accepted === false
+          ? <div className="requests-made-right">
+              <p className="p-pills">Pending</p>
+            </div>  
+          : <div className="requests-made-right">
+              <p className="p-pills">Accepted by {catsitter.displayname}</p>
+              <p className="p-pills">Apartment #{catsitter.apartment}</p>
+            </div>   
         }
-        {/* <p className="p-pills">Accepted by Darryl</p>
-        <p className="p-pills">Apartment #303</p> */}
-      </div>
+      {/* </div> */}
     </div>
   )
 }
 
-export default RequestMade;
+export default RequestMade;  

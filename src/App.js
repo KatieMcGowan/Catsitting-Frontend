@@ -60,3 +60,4 @@ export default App;
 //>User auth not disappearing on refresh
 //>Once an object is created, it not populating on redirected page
 //>When cat object is deleted, profile populates an empty pill until user is logged out
+//>On dashboard, "accepted by" info does not populate until page refreshes

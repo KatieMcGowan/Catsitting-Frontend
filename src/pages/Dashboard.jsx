@@ -34,7 +34,7 @@ const Dashboard = (props) => {
       <h1>Welcome, {user.displayname}!</h1>
       <p className="p-view-requests">View your neighbor's catsitting requests</p>
       <div className="dashboard-items">
-        <div className="pill-wrapper">
+        {/* <div className="pill-wrapper"> */}
           <div className="requests-made-header">
             <p className="p-requests-dashboard">Requests Made</p>
             <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
@@ -63,8 +63,8 @@ const Dashboard = (props) => {
               </div>
             </div>
           </div> */}
-        </div>  
-        <div className="pill-wrapper">
+        {/* </div>   */}
+        {/* <div className="pill-wrapper"> */}
           <div className="requests-accepted-header">
             <p className="p-requests-dashboard">Requests Accepted</p>
             <Link to={"/dashboard/requests"}>Browse</Link>
@@ -92,7 +92,7 @@ const Dashboard = (props) => {
               <p className="p-pills">Posted by Lin</p>
               <p className="p-pills">Apartment #133</p>
             </div> */}
-        </div>
+        {/* </div> */}
       </div>     
     </div>
   );

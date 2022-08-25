@@ -9,7 +9,7 @@ const RequestsAccepted = (props) => {
   };
 
   return(
-    <div>
+    <div className="pill-wrapper">
       {sortedRequestsAccepted.map((requestaccepted, index) => {
         return  <RequestAccepted
                   key={index}
