@@ -5,15 +5,16 @@ import "./NewRequest.css"
 
 const NewRequest = (props) => {
   let navigate = useNavigate();
-  let user = props.user.user
 
   const [state, setState] = useState({
     start: "",
     end: "",
     accepted: false,
-    creator: user._id,
+    creator: props.auth.userId
   });
   
+
+
   const handleChange = (event) => {
     setState({
       ...state,
