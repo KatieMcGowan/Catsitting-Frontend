@@ -25,7 +25,7 @@ const RequestShowCat = (props) => {
         additionalnotes: cat.additionalnotes,
       })
     })
-  }, [])
+  }, []);
 
   return (
     <div className="cat-info"> 

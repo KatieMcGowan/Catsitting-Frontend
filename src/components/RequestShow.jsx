@@ -17,13 +17,12 @@ const RequestShowComponent = (props) => {
     catsitterdisplayname: "",
     catsitterapartment: "",
     accepted: "",
-    cats: "",
+    cats: [],
   });
 
   //REQUEST STATE FOR CATSITTER CANCEL (UPDATES REQUEST OBJECT)
   const [updatedRequest, setUpdatedRequest] = useState({
     accepted: false,
-    catsitter: ""
   })
   
   const dateConversion = (datestring) => {
@@ -127,14 +126,14 @@ const RequestShowComponent = (props) => {
             <p className="p-pills">Apartment #{request.creatorapartment}</p>
           </div>
         } 
-      <div className="cat-info"> 
-        {/* {request.cats.map((cat, index) => {
+      {/* <div className="cat-info">  */}
+        {request.cats.map((cat, index) => {
           return  <RequestShowCat
                     key={index}
                     cat={cat}
                   />
-        })}  */}
-      </div>
+        })}  
+      {/* </div> */}
         {creatorCatsitterSame 
         ? <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
         : <p className="p-accept-request" onClick={() => cancelCatsitting()}>Cancel Catsitting</p>

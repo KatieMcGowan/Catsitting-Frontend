@@ -33,7 +33,7 @@ const LogIn = (props) => {
     event.preventDefault();
     for (let i = 0; i < users.users.length; i++ ){
       if (users.users[i].username === state.username && users.users[i].password === state.password) {
-        let user = users.users[i]
+        let user = users.users[i]._id
         props.authSet(true,user)
         navigate("/dashboard")
       };

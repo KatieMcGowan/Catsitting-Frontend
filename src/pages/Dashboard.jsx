@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RequestsMadeContainer from "../components/RequestsMadeContainer";
 import RequestsAcceptedContainer from "../components/RequestsAcceptedContainer";
 import "./Dashboard.css";
+import UserQuery from "../queries/UserQuery";
 
 const Dashboard = (props) => {
-  let user = props.user.user
-  
-  const [state, setState] = useState({
-    requestsmade: "",
-    requestsaccepted: "",
+  const [user, setUser] = useState({
+    displayname: "",
+    requestsmade: [],
+    requestsaccepted: [],
   });
 
   //AUTH CHECK
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
-  const authCheck = () => {
-    if (!props.auth.loggedIn) {
-      navigate("/login")
-    } else return;
-  };
+  // const authCheck = () => {
+  //   if (!props.auth.loggedIn) {
+  //     navigate("/login")
+  //   } else return;
+  // };
 
   useEffect(() => {
-    authCheck();
-    setState({
-      requestsmade: user.requested,
-      requestsaccepted: user.accepted,
-    })
+    // authCheck();
+    UserQuery.show(props.auth.userId)
+    .then (user => {
+      setUser({
+        displayname: user.displayname,
+        requestsmade: user.requested,
+        requestsaccepted: user.accepted,
+      });
+    });
   }, []);
 
   return(
@@ -40,10 +44,10 @@ const Dashboard = (props) => {
             <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
           </div>  
           {/* <div className="requests-made-wrapper"> */}
-          {user.requested.length === 0 
+          {user.requestsmade.length === 0 
             ? <p className="no-requests">You haven't made any requests yet. Click the + above to add a request!</p>
             : <RequestsMadeContainer
-                requestsmade={state.requestsmade}
+                requestsmade={user.requestsmade}
               />  
           }
           {/* <RequestsMadeContainer
@@ -75,10 +79,10 @@ const Dashboard = (props) => {
             <p className="p-requests-dashboard">Requests Accepted</p>
             <Link to={"/dashboard/requests"}>Browse</Link>
           </div>  
-          {user.accepted.length === 0 
+          {user.requestsaccepted.length === 0 
             ? <p className="no-requests">You haven't accepted any requests yet. Click "browse" above to view catsitting requests!</p>
             : <RequestsAcceptedContainer
-                requestsaccepted={state.requestsaccepted}
+                requestsaccepted={user.requestsaccepted}
               />  
           }
           {/* <div className="requests-accepted-wrapper">

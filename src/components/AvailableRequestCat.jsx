@@ -10,7 +10,7 @@ const AvailableRequestCat = (props) => {
     personality: [],
     medication: [],
     additionalnotes: [],
-  })
+  });
 
   useEffect(() => {
     CatQuery.show(props.cat)
@@ -25,7 +25,7 @@ const AvailableRequestCat = (props) => {
         additionalnotes: cat.additionalnotes,
       })
     })
-  }, [])
+  }, []);
 
   return (
     <div className="cat-info">

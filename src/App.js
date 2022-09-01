@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import AddCat from "./pages/AddCat";
@@ -17,45 +17,28 @@ const App = () => {
   //AUTH STATES
   const [auth, setAuth] = useState({
     loggedIn: false,
+    userId: ""
   })
 
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
 
   //AUTH FUNCTION
   const authSet = (boolean, user) => {
     setAuth({
       loggedIn: boolean,
-    });
-    setUser({
-      user
+      userId: user
     });
   };
+
+  // useEffect(() => {
+  //   UserQuery.show(user.user._id)
+  //   .then(data => {
+  //     setUser({
+  //       data
+  //     })
+  //   })
+  // }, [user])
   
-  console.log(user);
-
-  //DATE CONVERSION FUNCTIONs
-  const dateConversion = (datestring) => {
-    let dateDate = new Date (datestring)
-    let ampm = "AM"
-    let month = (dateDate.getMonth() + 1).toString();
-    let date = dateDate.getDate().toString();
-    let hours = dateDate.getHours();
-    let minutes = dateDate.getMinutes()
-    if (minutes < 10) {
-      minutes = "0" + minutes
-    };
-    if (hours === 12) {
-      hours = hours.toString()
-      ampm = "PM"
-    } else if (hours > 12) {
-      hours = hours - 12;
-      ampm = "PM"
-    } else {
-      hours = hours.toString()
-    }
-    return (month + "/" + date + " @" + hours + ":" + minutes + ampm)
-  };
-
   return (
     <div>
       <Header />
@@ -63,14 +46,14 @@ const App = () => {
         <Route exact path={"/"} element={<Landing />} />
         <Route path={"/login"} element={<LogIn authSet={authSet}/>} />
         <Route path={"/signup"} element={<SignUp />} />
-        <Route path={"/dashboard"} element={<Dashboard auth={auth} user={user}/>} />
-        <Route path={"/dashboard/profile"} element={<Profile auth={auth} user={user}/>} />
-        <Route path={"/dashboard/:catid/edit"} element={<EditCat auth={auth} user={user}/>} />
-        <Route path={"/dashboard/addcat"} element={<AddCat auth={auth} user={user}/>} />
-        <Route path={"/dashboard/requests"} element={<AvailableRequests auth={auth} user={user}/>} />
-        <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} user={user}/>} />
-        <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} user={user}/>} />
-        <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} user={user}/>} />
+        <Route path={"/dashboard"} element={<Dashboard auth={auth} />} />
+        <Route path={"/dashboard/profile"} element={<Profile auth={auth} />} />
+        <Route path={"/dashboard/:catid/edit"} element={<EditCat auth={auth} />} />
+        <Route path={"/dashboard/addcat"} element={<AddCat auth={auth} />} />
+        <Route path={"/dashboard/requests"} element={<AvailableRequests auth={auth} />} />
+        <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} />} />
+        <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} />} />
+        <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} />} />
       </Routes>
     </div>  
   );
@@ -86,3 +69,12 @@ export default App;
 //>On dashboard, "accepted by" info does not populate until page refreshes
 //>Put date conversion at top (app level) and pass down as props to declutter child pages/components
 //>Get placeholder start/end times to work for edit request page
+//>Dashboard only shows two "request made" and "request accepted" objects even if there are more on the backend
+
+//BIG FEATURE FIXES; 
+//> CSS formatting on pages
+//> Find a way to re-query user object at the top level after every object creation/update/destruction, so updated info trickles down in redirect
+//> Update schema to allow only two cats
+//> Have error messages appear on cat creation page stating that only two cats are allowed
+//> Have error messages appear on request creation page stating that you need at least one cat to make a request
+//> Reintroduce personality selection for cat creation/edit page

@@ -7,13 +7,14 @@ import AvailableRequestCat from "./AvailableRequestCat";
 const AvailableRequest = (props) => {
   let navigate = useNavigate();
 
-  //REQUEST STATES FOR DISPLAY
+  //REQUEST STATE FOR DISPLAY
   const [schedule, setSchedule] = useState({
     start: props.dateConversion(props.request.start),
     end: props.dateConversion(props.request.end),
     id: props.request._id
   });
 
+  //USER STATE FOR DISPLAY
   const [requester, setrequester] = useState({
     creator: "",
     apartment: "",
@@ -29,7 +30,7 @@ const AvailableRequest = (props) => {
     }));
   }, [])
 
-  //REQUEST OBJECT STATE FOR UPDATE
+  //UPDATED REQUEST STATE TO SEND BACK
   const [request, setRequest] = useState({
     accepted: true,
     catsitter: props.user.user._id,

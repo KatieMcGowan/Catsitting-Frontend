@@ -7,6 +7,7 @@ const EditRequest = (props) => {
   let navigate = useNavigate();
   let requestId = useParams().requestid;
 
+  //PLACEHOLDER WITH OLD REQUEST STATE
   const [request, setRequest] = useState({
     start: "",
     end: "",
@@ -20,8 +21,9 @@ const EditRequest = (props) => {
         end: request.end,
       })
     })
-  }, [])
+  }, []);
 
+  //UPDATED REQUEST STATE TO SEND BACK
   const [updatedRequest, setUpdatedRequest] = useState({
     start: "",
     end: "",
@@ -43,7 +45,7 @@ const EditRequest = (props) => {
   };
 
   const handleDeleteRequest = () => {
-    RequestQuery.delete(props.requestId)
+    RequestQuery.delete(requestId)
     .then(data => {
       navigate("/dashboard/requests")
     });
