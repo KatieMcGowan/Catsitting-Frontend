@@ -1,6 +1,7 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import RequestQuery from "../queries/RequestQuery"
+import UserQuery from "../queries/UserQuery"
 import "./NewRequest.css"
 
 const NewRequest = (props) => {
@@ -12,8 +13,19 @@ const NewRequest = (props) => {
     accepted: false,
     creator: props.auth.userId
   });
-  
 
+  const [user, setUser] = useState({
+    cats: []
+  })
+  
+  useEffect(() => {
+    UserQuery.show(props.auth.userId)
+    .then(user => {
+      setUser({
+        cats: user.cats
+      })
+    })
+  }, []);
 
   const handleChange = (event) => {
     setState({
@@ -24,10 +36,14 @@ const NewRequest = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    RequestQuery.create(state)
-    .then(data => {
-      navigate("/dashboard")
-    })
+    if (user.cats.length === 0) {
+      return;
+    } else {
+      RequestQuery.create(state)
+      .then(data => {
+        navigate("/dashboard")
+      })
+    };
   };
 
   return(
@@ -63,6 +79,9 @@ const NewRequest = (props) => {
           </div>
         </div>  
       </form>
+      {user.cats.length === 0 && 
+      <p>No cats currently added to your profile. Click <Link to={"/dashboard/addcat"}>here</Link> to add a cat, then make a request.</p>
+      }
     </div>
   );
 };

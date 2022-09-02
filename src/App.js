@@ -20,8 +20,6 @@ const App = () => {
     userId: ""
   })
 
-  // const [user, setUser] = useState({})
-
   //AUTH FUNCTION
   const authSet = (boolean, user) => {
     setAuth({
@@ -30,15 +28,6 @@ const App = () => {
     });
   };
 
-  // useEffect(() => {
-  //   UserQuery.show(user.user._id)
-  //   .then(data => {
-  //     setUser({
-  //       data
-  //     })
-  //   })
-  // }, [user])
-  
   return (
     <div>
       <Header />
@@ -73,7 +62,6 @@ export default App;
 
 //BIG FEATURE FIXES; 
 //> CSS formatting on pages
-//> Find a way to re-query user object at the top level after every object creation/update/destruction, so updated info trickles down in redirect
 //> Update schema to allow only two cats
 //> Have error messages appear on cat creation page stating that only two cats are allowed
 //> Have error messages appear on request creation page stating that you need at least one cat to make a request
