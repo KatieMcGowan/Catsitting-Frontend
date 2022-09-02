@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import UserQuery from "../queries/UserQuery";
 import RequestQuery from "../queries/RequestQuery";
 import AvailableRequestCat from "./AvailableRequestCat";
 
 const AvailableRequest = (props) => {
-  console.log(props);
   let navigate = useNavigate();
 
   //REQUEST STATE FOR DISPLAY
@@ -17,6 +16,7 @@ const AvailableRequest = (props) => {
 
   //USER STATE FOR DISPLAY
   const [requester, setrequester] = useState({
+    creatorId: "",
     creator: "",
     apartment: "",
     cats: []
@@ -25,6 +25,7 @@ const AvailableRequest = (props) => {
   useEffect(() => {
     UserQuery.show(props.request.creator)
     .then(requester => setrequester({
+      creatorId: requester._id,
       creator: requester.displayname,
       apartment: requester.apartment,
       cats: requester.cats,
@@ -61,7 +62,10 @@ const AvailableRequest = (props) => {
                     cat={cat}
                   />
         })}
-        <p className="p-accept-request" onClick={() => handleAcceptRequest()}>Accept Request</p>
+        {props.user !== requester.creatorId 
+          ? <p className="p-accept-request" onClick={() => handleAcceptRequest()}>Accept Request</p>
+          : <Link to={`/dashboard/requests/${schedule.id}`}>View Request</Link>
+        }
       </div>
     </div>
   )
