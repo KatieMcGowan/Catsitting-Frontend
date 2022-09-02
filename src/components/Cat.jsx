@@ -42,15 +42,15 @@ const Cat = (props) => {
           <p className="p-cat-header">Care Instructions</p>
           <div className="cats-right">
             <div className="p-care-instructions">
-              <p className="p-care-header">Feeding</p>
+              <p className="p-care-header">Feeding:</p>
               <p className="p-pills">{catObject.feeding}</p>
             </div>
             <div className="p-care-instructions">
-              <p className="p-care-header">Medication</p>
+              <p className="p-care-header">Medication:</p>
               <p className="p-pills">{catObject.medication}</p>
             </div>  
             <div className="p-care-instructions">
-              <p className="p-care-header">Additional Notes</p>
+              <p className="p-care-header">Additional Notes:</p>
               <p className="p-pills">{catObject.additionalnotes}</p>
             </div>  
           </div>

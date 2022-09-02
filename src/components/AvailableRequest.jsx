@@ -46,26 +46,28 @@ const AvailableRequest = (props) => {
   };
 
   return (
-    <div className="your-cat-pill">
-      <div className="individual-request-wrapper">
-        <div className="requests-made-left">
-          <p className="p-pills">{schedule.start}</p>
-          <p className="p-pills">{schedule.end}</p>
+    <div className="requests-available">
+      <div className="your-cat-pill">
+        <div className="individual-request-wrapper">
+          <div className="requests-made-left">
+            <p className="p-pills">{schedule.start}</p>
+            <p className="p-pills">{schedule.end}</p>
+          </div>
+          <div className="requests-made-right">
+            <p className="p-pills">Posted by: {requester.creator}</p>
+            <p className="p-pills">Apartment #{requester.apartment}</p>
+          </div>
+          {requester.cats.map((cat, index) => {
+            return  <AvailableRequestCat
+                      key={index}
+                      cat={cat}
+                    />
+          })}
+          {props.user !== requester.creatorId 
+            ? <p className="p-accept-request" onClick={() => handleAcceptRequest()}>Accept Request</p>
+            : <Link to={`/dashboard/requests/${schedule.id}`}>View Request</Link>
+          }
         </div>
-        <div className="requests-made-right">
-          <p className="p-pills">Posted by: {requester.creator}</p>
-          <p className="p-pills">Apartment #{requester.apartment}</p>
-        </div>
-        {requester.cats.map((cat, index) => {
-          return  <AvailableRequestCat
-                    key={index}
-                    cat={cat}
-                  />
-        })}
-        {props.user !== requester.creatorId 
-          ? <p className="p-accept-request" onClick={() => handleAcceptRequest()}>Accept Request</p>
-          : <Link to={`/dashboard/requests/${schedule.id}`}>View Request</Link>
-        }
       </div>
     </div>
   )

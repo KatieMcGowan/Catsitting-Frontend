@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CatQuery from "../queries/CatQuery";
 
 const AvailableRequestCat = (props) => {
+
   const [cat, setCat] = useState({
     catname: "",
     age: "",

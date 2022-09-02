@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Cat from "./Cat";
 
 const Cats = (props) => {
@@ -9,7 +10,11 @@ const Cats = (props) => {
   };
 
   return(
-    <div>
+    <div className="your-cats-wrapper">
+      <div className="your-cats-header">
+        <p className="p-your-cats">Your Cats</p>
+        <Link to={"/dashboard/addcat"} className="addbutton">+</Link>
+      </div>  
       {sortedCats.map((cat, index) => {
         return  <Cat
                   key={index}
