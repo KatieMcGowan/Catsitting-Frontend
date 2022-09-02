@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import RequestsAccepted from "./RequestsAccepted";
 
 const RequestsAcceptedContainer = (props) => {

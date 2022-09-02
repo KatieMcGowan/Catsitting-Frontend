@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 import RequestShow from "./pages/RequestShow";
 import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
-
+//PAGE FOR TESTING OUT HOW TO INPUT MEDICATION/ADDITIONAL NOTES
 import TestCat from "./pages/testCat";
 
 const App = () => {
@@ -30,8 +30,6 @@ const App = () => {
     });
   };
 
-  console.log(auth);
-  
   return (
     <div>
       <Header auth={auth} authSet={authSet}/>
@@ -47,7 +45,6 @@ const App = () => {
         <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} />} />
         <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} />} />
         <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} />} />
-
         <Route path={"/testcat"} element={<TestCat />} />
       </Routes>
     </div>  
@@ -68,5 +65,5 @@ export default App;
 //> CSS formatting on pages
 //> Update schema to allow only two cats
 //> Have error messages appear on cat creation page stating that only two cats are allowed
-//> Reintroduce personality selection for cat creation/edit page
 //> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
+//> You should not be allowed to accept your own request
