@@ -1,10 +1,26 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import RequestShowComponent from "../components/RequestShow"
+import UserQuery from "../queries/UserQuery";
 import "./RequestShow.css"
 
 const RequestShow = (props) => {
   let requestId = useParams().requestid
-  let user = props.user.user;
+
+  const [state, setState] = useState({
+    userId: "",
+    cats: []
+  })
+
+  useEffect(() => {
+    UserQuery.show(props.auth.userId)
+    .then(data => {
+      setState({
+        userId: data._id,
+        cats: data.cats
+      })
+    })
+  }, [])
 
   return(
     <div className="request-show-wrapper">
@@ -12,8 +28,9 @@ const RequestShow = (props) => {
       <div className="requests-available">
         <RequestShowComponent
           requestId={requestId}
-          userId={user._id}
-          userCats={user.cats}
+          userId={state.userId}
+          cats={state.cats}
+
         />
       </div>  
     </div>

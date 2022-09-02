@@ -11,7 +11,7 @@ const RequestShowComponent = (props) => {
   const [request, setRequest] = useState({
     start: "",
     end: "",
-    creatorid: "",
+    creatorId: "",
     creatordisplayname: "",
     creatorapartment: "",
     catsitterdisplayname: "",
@@ -23,8 +23,8 @@ const RequestShowComponent = (props) => {
   //REQUEST STATE FOR CATSITTER CANCEL (UPDATES REQUEST OBJECT)
   const [updatedRequest, setUpdatedRequest] = useState({
     accepted: false,
-  })
-  
+  });
+
   const dateConversion = (datestring) => {
     let dateDate = new Date (datestring)
     let ampm = "AM"
@@ -50,21 +50,21 @@ const RequestShowComponent = (props) => {
   useEffect(() => {
     RequestQuery.show(props.requestId)
     .then(request => {
-      if(request.creator === props.userId && request.accepted === false) {
+      if(request.creatorId === props.userId && request.accepted === false) {
         setRequest({
           start: dateConversion(request.start),
           end: dateConversion(request.end),
-          creatorid: props.userId,
+          creatorId: props.userId,
           accepted: false,
           cats: props.userCats,
         })
-      } else if (request.creator === props.userId && request.accepted === true) {
+      } else if (request.creatorId === props.userId && request.accepted === true) {
           UserQuery.show(request.catsitter)
           .then(catsitter => {
             setRequest({
               start: dateConversion(request.start),
               end: dateConversion(request.end),
-              creatorid: props.userId,
+              creatorId: props.userId,
               catsitterdisplayname: catsitter.displayname,
               catsitterapartment: catsitter.apartment,
               accepted: true,
@@ -77,16 +77,16 @@ const RequestShowComponent = (props) => {
           setRequest({
             start: dateConversion(request.start),
             end: dateConversion(request.end),
-            creatorid: creator._id,
+            creatorId: creator._id,
             creatordisplayname: creator.displayname,
             creatorapartment: creator.apartment,
-            accepted: true,
+            accepted: request.accepted,
             cats: creator.cats
           })
         })
       }
     })
-  }, [])
+  }, []);
 
   //FUNCTIONS FOR USER INTERACTION WITH REQUEST OBJECT
   const redirectToEdit = () => {
@@ -100,7 +100,7 @@ const RequestShowComponent = (props) => {
     });
   };
 
-  let creatorCatsitterSame = (props.userId === request.creatorid)
+  let creatorCatsitterSame = (props.userId === request.creatorId)
   
   return (
     <div className="your-cat-pill">
