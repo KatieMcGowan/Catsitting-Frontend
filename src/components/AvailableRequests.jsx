@@ -1,6 +1,8 @@
 import AvailableRequest from "./AvailableRequest";
 
 const AvailableRequests = (props) => {
+
+  console.log(props)
   //SORTS BY NEWEST REQUEST
   //should it be this way? Maybe sort by closest start date?
   const sortedAvailableRequests = [];

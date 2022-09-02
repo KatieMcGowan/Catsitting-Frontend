@@ -5,7 +5,6 @@ import CatQuery from "../queries/CatQuery"
 import "./AddCat.css";
 
 const AddCat = (props) => {
-  let user = props.user.user;
   let navigate = useNavigate();
 
   //CAT OBJECT STATE
@@ -14,7 +13,7 @@ const AddCat = (props) => {
     age: "",
     breed: "",
     feeding: "",
-    user: user._id,
+    user: props.auth.userId,
     personality: [],
     medication: [],
     additionalnotes: [],

@@ -5,6 +5,7 @@ import RequestQuery from "../queries/RequestQuery";
 import AvailableRequestCat from "./AvailableRequestCat";
 
 const AvailableRequest = (props) => {
+  console.log(props)
   let navigate = useNavigate();
 
   //REQUEST STATE FOR DISPLAY
@@ -33,7 +34,7 @@ const AvailableRequest = (props) => {
   //UPDATED REQUEST STATE TO SEND BACK
   const [request, setRequest] = useState({
     accepted: true,
-    catsitter: props.user.user._id,
+    catsitter: props.user
   })
 
   const handleAcceptRequest = () => {

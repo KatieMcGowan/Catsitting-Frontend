@@ -4,6 +4,8 @@ import AvailableRequestsContainer from "../components/AvailableRequestsContainer
 import "./AvailableRequests.css"
 
 const AvailableRequests = (props) => {
+
+  console.log(props);
   const [availableRequests, setAvailableRequests] = useState([]);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ const AvailableRequests = (props) => {
         {/* <div className="your-cat-pill"> */}
         {availableRequests.length === 0 
             ? <p className="no-requests">No available requests</p> 
-            : <AvailableRequestsContainer availablerequests={availableRequests} user={props.user}/>}  
+            : <AvailableRequestsContainer availablerequests={availableRequests} user={props.auth.userId}/>}  
           {/* <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>

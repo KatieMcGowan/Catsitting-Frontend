@@ -1,26 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CatsContainer from "../components/CatsContainer";
+import UserQuery from "../queries/UserQuery";
 import "./Profile.css"
 
 const Profile = (props) => {
-  let user = props.user.user;
+  const [profile, setProfile] = useState({
+    displayname: "",
+    username: "",
+    apartment: "",
+    cats: []
+  });
 
-  const [cats, setCats] = useState({
-    cats: user.cats
-  })
+  useEffect(() => {
+    UserQuery.show(props.auth.userId)
+    .then(data => {
+      setProfile({
+        displayname: data.displayname,
+        username: data.username,
+        apartment: data.apartment,
+        cats: data.cats
+      })
+    })
+  }, []);
 
   return(
   <div className="profile-wrapper">
-      <h1>{user.displayname} @{user.username}</h1>
-      <p className="p-profile-apartment-number">Apartment #{user.apartment}</p>
+      <h1>{profile.displayname} @{profile.username}</h1>
+      <p className="p-profile-apartment-number">Apartment #{profile.apartment}</p>
       <div className="your-cats-wrapper">
         <div className="your-cats-header">
           <p className="p-your-cats">Your Cats</p>
           <Link to={"/dashboard/addcat"} className="addbutton">+</Link>
         </div>  
         <CatsContainer
-          cats={cats}
+          cats={profile.cats}
         />  
         {/* <div className="your-cat-pill">
           <div className="cat-info">

@@ -3,7 +3,7 @@ import Cats from "./Cats";
 const CatsContainer = (props) => {
   return(
       <Cats
-        cats={props.cats.cats}
+        cats={props.cats}
       />
   )
 };
