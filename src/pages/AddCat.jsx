@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Select from "react-select";
 import CatQuery from "../queries/CatQuery"
 import "./AddCat.css";
 
@@ -14,9 +13,9 @@ const AddCat = (props) => {
     breed: "",
     feeding: "",
     user: props.auth.userId,
-    personality: [],
-    medication: [],
-    additionalnotes: [],
+    personality: "",
+    medication: "",
+    additionalnotes: "",
   });
 
   const handleChange = (event) => {
@@ -25,7 +24,7 @@ const AddCat = (props) => {
       [event.target.name]: event.target.value
     });
   };
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     CatQuery.create(state)
@@ -33,12 +32,6 @@ const AddCat = (props) => {
       navigate("/dashboard/profile")
     })
   };
-
-  // const options = [
-  //   {value: "friendly", label: "Friendly"},
-  //   {value: "shy", label: "Shy"},
-  //   {value: "playful", label: "Playful"},
-  // ];
 
   return(
     <div>
@@ -83,15 +76,27 @@ const AddCat = (props) => {
                 value={state.breed}
               />
             </div>
-            {/* <div className="new-cat-form-input">
-              <label htmlFor="personality">Personality (select up to three)</label>
-              <Select 
-                options={options}
+            <div className="new-cat-form-input">
+              <label htmlFor="personality">Personality</label>
+              <select
                 name="personality"
-                onChange={handleChange}
                 value={state.personality}
-              />
-            </div> */}
+                onChange={handleChange}
+              >
+                <option value="Friendly">Friendly</option>
+                <option value="Shy">Shy</option>
+                <option value="Playful">Playful</option>
+                <option value="Skittish">Skittish</option>
+                <option value="Lazy">Lazy</option>
+                <option value="Mischievous">Mischievous</option>
+                <option value="Vocal">Vocal</option>
+                <option value="Quiet">Quiet</option>
+                <option value="Fearful">Fearful</option>
+                <option value="Antisocial">Antisocial</option>
+                <option value="Cuddly">Cuddly</option>
+                <option value="Needy">Needy</option>
+              </select>
+            </div>
           </div>
           <div className="care-instructions">
             <h1 className="care-instructions-header">Care Instructions</h1>

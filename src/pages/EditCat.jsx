@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CatQuery from "../queries/CatQuery"
-// import Select from "react-select"
+import RequestQuery from "../queries/RequestQuery"
 import "./AddCat.css"
 
 const EditCat = () => {
   let navigate = useNavigate();
-  let catId = useParams().catid
+  let catId = useParams().catid;
 
+  //PLACEHOLDER WITH OLD CAT STATE
   const [cat, setCat] = useState({
     catname: "",
     age: "",
     breed: "",
     feeding: "",
-    personality: [],
-    medication: [],
-    additionalnotes: [],
+    personality: "",
+    medication: "",
+    additionalnotes: "",
   });
+
+  const [affiliated, setAffiliated] = useState(false)
 
   //POPULATES FORM PLACEHOLDERS
   useEffect(() => {
@@ -32,14 +35,21 @@ const EditCat = () => {
     }))
   }, []);
 
+  // useEffect(() => {
+    // QUERIES REQUESTS TO SEE IF CAT IS AFFILIATED WITH ACCEPTED REQUEST
+  //   RequestQuery.all()
+
+  // })
+
+  //UPDATED REQUEST STATE TO SEND BACK
   const [updatedCat, setUpdatedCat] = useState({
     catname: "",
     age: "",
     breed: "",
     feeding: "",
-    personality: [],
-    medication: [],
-    additionalnotes: [],
+    personality: "",
+    medication: "",
+    additionalnotes: "",
   });
 
   const handleChange = (event) => {
@@ -117,13 +127,26 @@ const EditCat = () => {
               />
             </div>
             <div className="new-cat-form-input">
-              <label htmlFor="personality">Personality (select up to three)</label>
-              {/* <Select 
-                options={options}
-                name="personality"
+              <label htmlFor="personality">Personality</label>
+              <select 
+                name="personality" 
+                value={updatedCat.personality}
+                placeholder={cat.personality}
                 onChange={handleChange}
-                value={state.personality}
-              /> */}
+              >
+                <option value="friendly">Friendly</option>
+                <option value="shy">Shy</option>
+                <option value="playful">Playful</option>
+                <option value="skittish">Skittish</option>
+                <option value="lazy">Lazy</option>
+                <option value="mischievous">Mischievous</option>
+                <option value="vocal">Vocal</option>
+                <option value="quiet">Quiet</option>
+                <option value="fearful">Fearful</option>
+                <option value="antisocial">Antisocial</option>
+                <option value="cuddly">Cuddly</option>
+                <option value="needy">Needy</option>
+              </select>
             </div>
           </div>
           <div className="care-instructions">

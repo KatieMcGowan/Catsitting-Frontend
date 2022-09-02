@@ -4,8 +4,6 @@ import AvailableRequestsContainer from "../components/AvailableRequestsContainer
 import "./AvailableRequests.css"
 
 const AvailableRequests = (props) => {
-
-  console.log(props);
   const [availableRequests, setAvailableRequests] = useState([]);
 
   useEffect(() => {

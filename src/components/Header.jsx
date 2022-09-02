@@ -1,14 +1,17 @@
 import Nav from "./Nav"
 import "./Header.css"
 
-const Header = () => {
+const Header = (props) => {
   return(
     <div className="header">
       <div className="left">
         <div className="placeholder"></div>
         <h2>Catsitting</h2>
       </div>  
-      <Nav />
+      <Nav 
+        loggedIn={props.auth.loggedIn}
+        authSet={props.authSet}
+      />
     </div>
   );
 };

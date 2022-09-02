@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import AddCat from "./pages/AddCat";
@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import RequestShow from "./pages/RequestShow";
 import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
+
+import TestCat from "./pages/testCat";
 
 const App = () => {
   //AUTH STATES
@@ -28,9 +30,11 @@ const App = () => {
     });
   };
 
+  console.log(auth);
+  
   return (
     <div>
-      <Header />
+      <Header auth={auth} authSet={authSet}/>
       <Routes>
         <Route exact path={"/"} element={<Landing />} />
         <Route path={"/login"} element={<LogIn authSet={authSet}/>} />
@@ -43,6 +47,8 @@ const App = () => {
         <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} />} />
         <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} />} />
         <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} />} />
+
+        <Route path={"/testcat"} element={<TestCat />} />
       </Routes>
     </div>  
   );
@@ -55,8 +61,6 @@ export default App;
 //>User auth not disappearing on refresh
 //>Once an object is created, it not populating on redirected page
 //>When cat object is deleted, profile populates an empty pill until user is logged out
-//>On dashboard, "accepted by" info does not populate until page refreshes
-//>Put date conversion at top (app level) and pass down as props to declutter child pages/components
 //>Get placeholder start/end times to work for edit request page
 //>Dashboard only shows two "request made" and "request accepted" objects even if there are more on the backend
 
@@ -64,5 +68,5 @@ export default App;
 //> CSS formatting on pages
 //> Update schema to allow only two cats
 //> Have error messages appear on cat creation page stating that only two cats are allowed
-//> Have error messages appear on request creation page stating that you need at least one cat to make a request
 //> Reintroduce personality selection for cat creation/edit page
+//> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
