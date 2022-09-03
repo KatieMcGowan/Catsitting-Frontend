@@ -20,6 +20,7 @@ form {
 .about-your-cat-header {
   font-size: 14px;
   margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .about-your-cat {
@@ -37,6 +38,7 @@ label {
 .care-instructions-header {
   font-size: 14px;
   margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .care-instructions {

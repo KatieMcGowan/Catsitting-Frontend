@@ -49,6 +49,9 @@ button {
   flex-flow: column;
 }
 
+.cat-info {
+  width: 75%;
+}
 .p-cat-header {
   font-size: 12px;
   margin: 10px 0;
@@ -99,7 +102,7 @@ button {
     display: flex;
     flex-direction: row wrap;
     justify-content: space-between;
-    width: 70%; 
+    width: 75%; 
   }
 
   .p-cat-header {

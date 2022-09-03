@@ -72,13 +72,7 @@ const EditCat = () => {
     .then(data => {
       navigate("/dashboard")
     })
-  }
-
-  // const options = [
-  //   {value: "friendly", label: "Friendly"},
-  //   {value: "shy", label: "Shy"},
-  //   {value: "playful", label: "Playful"},
-  // ];
+  };
 
   return(
     <div>
@@ -134,18 +128,18 @@ const EditCat = () => {
                 placeholder={cat.personality}
                 onChange={handleChange}
               >
-                <option value="friendly">Friendly</option>
-                <option value="shy">Shy</option>
-                <option value="playful">Playful</option>
-                <option value="skittish">Skittish</option>
-                <option value="lazy">Lazy</option>
-                <option value="mischievous">Mischievous</option>
-                <option value="vocal">Vocal</option>
-                <option value="quiet">Quiet</option>
-                <option value="fearful">Fearful</option>
-                <option value="antisocial">Antisocial</option>
-                <option value="cuddly">Cuddly</option>
-                <option value="needy">Needy</option>
+                <option value="Friendly">Friendly</option>
+                <option value="Shy">Shy</option>
+                <option value="Playful">Playful</option>
+                <option value="Skittish">Skittish</option>
+                <option value="Lazy">Lazy</option>
+                <option value="Mischievous">Mischievous</option>
+                <option value="Vocal">Vocal</option>
+                <option value="Quiet">Quiet</option>
+                <option value="Fearful">Fearful</option>
+                <option value="Antisocial">Antisocial</option>
+                <option value="Cuddly">Cuddly</option>
+                <option value="Needy">Needy</option>
               </select>
             </div>
           </div>

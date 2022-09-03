@@ -23,11 +23,11 @@ const AvailableRequests = (props) => {
     <div className="available-requests-wrapper">
       <h1 className="available-requests-header">Available Requests</h1>
       <div className="requests-available">
-        <div className="your-cat-pill">
-        {/* {availableRequests.length === 0 
+        {/* <div className="your-cat-pill"> */}
+        {availableRequests.length === 0 
             ? <p className="no-requests">No available requests</p> 
-            : <AvailableRequestsContainer availablerequests={availableRequests} user={props.auth.userId}/>}   */}
-          <div className="cat-info">
+            : <AvailableRequestsContainer availablerequests={availableRequests} user={props.auth.userId}/>}  
+          {/* <div className="cat-info">
             <div>
               <p className="p-cat-header">Peanut</p>
               <div className="cats-left">
@@ -55,8 +55,8 @@ const AvailableRequests = (props) => {
               </div>
             </div>  
           </div>
-          <div className="p-accept-request">Accept Request</div>
-        </div>
+        <div className="p-accept-request">Accept Request</div> */}
+        {/* </div> */}
       </div>
     </div>
   )

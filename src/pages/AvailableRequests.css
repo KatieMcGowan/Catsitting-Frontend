@@ -12,12 +12,26 @@
 
 .individual-request-wrapper {
   display: flex;
+  flex-direction: column;
+  /* flex-direction: row;
+  justify-content: space-between; */
+  align-items: center;
+  padding: 10px;
+  min-height: 50px;
+  width: 90%;
+  margin: 0 0 10px 0;
+}
+
+.available-request-time-requester {
+  border: solid skyblue;
+  border-width: 0 0 3px 0;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   min-height: 50px;
-  width: 90%;
+  width: 75%;
   margin: 0 0 10px 0;
 }
 

@@ -33,7 +33,7 @@ const AvailableRequests = (props) => {
   };
   
   return(
-    <div>
+    <div className="your-cat-pill">
       {sortedAvailableRequests.map((availablerequest, index) => {
         return  <AvailableRequest
                   key={index}
