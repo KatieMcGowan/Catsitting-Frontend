@@ -50,7 +50,8 @@ const RequestShowComponent = (props) => {
   useEffect(() => {
     RequestQuery.show(props.requestId)
     .then(request => {
-      if(request.creatorId === props.userId && request.accepted === false) {
+      if(request.creator === props.userId && request.accepted === false) {
+        console.log("Creator catsitter same, request not accepted")
         setRequest({
           start: dateConversion(request.start),
           end: dateConversion(request.end),
@@ -58,7 +59,8 @@ const RequestShowComponent = (props) => {
           accepted: false,
           cats: props.userCats,
         })
-      } else if (request.creatorId === props.userId && request.accepted === true) {
+      } else if (request.creator === props.userId && request.accepted === true) {
+        console.log("Creator catsitter same, request accepted")
           UserQuery.show(request.catsitter)
           .then(catsitter => {
             setRequest({
@@ -72,21 +74,27 @@ const RequestShowComponent = (props) => {
             })
           })  
       } else {
+        console.log("Creator catsitter not the same")
         UserQuery.show(request.creator)
         .then(creator => {
-          setRequest({
-            start: dateConversion(request.start),
-            end: dateConversion(request.end),
-            creatorId: creator._id,
-            creatordisplayname: creator.displayname,
-            creatorapartment: creator.apartment,
-            accepted: request.accepted,
-            cats: creator.cats
+          UserQuery.show(request.catsitter)
+          .then(catsitter => {
+            setRequest({
+              start: dateConversion(request.start),
+              end: dateConversion(request.end),
+              creatorId: creator._id,
+              creatordisplayname: creator.displayname,
+              creatorapartment: creator.apartment,
+              catsitterdisplayname: catsitter.displayname,
+              catsitterapartment: catsitter.apartment,
+              accepted: request.accepted,
+              cats: creator.cats,
+            })
           })
         })
-      }
+      }  
     })
-  }, []);
+  },[]);
 
   //FUNCTIONS FOR USER INTERACTION WITH REQUEST OBJECT
   const redirectToEdit = () => {
@@ -140,7 +148,7 @@ const RequestShowComponent = (props) => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RequestShowComponent
+export default RequestShowComponent;
