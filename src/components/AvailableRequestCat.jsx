@@ -29,7 +29,7 @@ const AvailableRequestCat = (props) => {
   }, []);
 
   return (
-    <div className="cat-info">
+    <div className="request-cat-info">
       <div>
         <p className="p-cat-header">{cat.catname}</p>
         <div className="cats-left">

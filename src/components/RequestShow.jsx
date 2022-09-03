@@ -105,6 +105,7 @@ const RequestShowComponent = (props) => {
   return (
     <div className="your-cat-pill">
       <div className="individual-request-wrapper">
+        <div className="available-request-time-requester">
         <div className="requests-made-left">
           <p className="p-pills">{request.start}</p>
           <p className="p-pills">{request.end}</p>
@@ -126,14 +127,13 @@ const RequestShowComponent = (props) => {
             <p className="p-pills">Apartment #{request.creatorapartment}</p>
           </div>
         } 
-      {/* <div className="cat-info">  */}
+      </div>
         {request.cats.map((cat, index) => {
           return  <RequestShowCat
                     key={index}
                     cat={cat}
                   />
-        })}  
-      {/* </div> */}
+        })} 
         {creatorCatsitterSame 
         ? <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
         : <p className="p-accept-request" onClick={() => cancelCatsitting()}>Cancel Catsitting</p>

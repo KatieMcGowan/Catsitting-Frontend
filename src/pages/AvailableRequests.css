@@ -35,6 +35,14 @@
   margin: 0 0 10px 0;
 }
 
+.request-cat-info {
+  padding: 0 0 10px 0;
+  margin: 0 0 10px 0;
+  width: 75%;
+  border: solid skyblue;
+  border-width: 0 0 3px 0;
+}
+
 .p-accept-request {
   font-size: 12px;
   margin: 10px 0;
@@ -48,6 +56,13 @@
   .individual-request-wrapper {
     max-width: 1200px;
   }  
+
+  .request-cat-info {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+    width: 75%; 
+  }
 
   .p-accept-request {
     font-size: 16px; 
