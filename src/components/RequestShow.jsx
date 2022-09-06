@@ -5,7 +5,6 @@ import RequestQuery from "../queries/RequestQuery";
 import RequestShowCat from "./RequestShowCat";
 
 const RequestShowComponent = (props) => {
-  console.log(props);
   let navigate = useNavigate();
   
   //REQUEST STATE FOR DISPLAY
@@ -51,31 +50,34 @@ const RequestShowComponent = (props) => {
   useEffect(() => {
     RequestQuery.show(props.requestId)
     .then(request => {
-      if(request.creator === props.userId && request.accepted === false) {
-        console.log("Creator catsitter same, request not accepted")
-        setRequest({
-          start: dateConversion(request.start),
-          end: dateConversion(request.end),
-          creatorId: props.userId,
-          accepted: false,
-          cats: props.userCats,
-        })
+      if (request.creator === props.userId && request.accepted === false) {
+        UserQuery.show(request.creator)
+        .then(creator => {
+          setRequest({
+            start: dateConversion(request.start),
+            end: dateConversion(request.end),
+            creatorId: creator._id,
+            accepted: request.accepted,
+            cats: creator.cats,
+          });
+        });
       } else if (request.creator === props.userId && request.accepted === true) {
-        console.log("Creator catsitter same, request accepted")
+        UserQuery.show(request.creator)
+        .then(creator => {
           UserQuery.show(request.catsitter)
           .then(catsitter => {
             setRequest({
               start: dateConversion(request.start),
               end: dateConversion(request.end),
-              creatorId: props.userId,
+              creatorId: creator._id,
               catsitterdisplayname: catsitter.displayname,
               catsitterapartment: catsitter.apartment,
-              accepted: true,
-              cats: props.userCats
+              accepted: request.accepted,
+              cats: creator.cats
             })
           })  
+        })
       } else {
-        console.log("Creator catsitter not the same")
         UserQuery.show(request.creator)
         .then(creator => {
           UserQuery.show(request.catsitter)
@@ -95,10 +97,9 @@ const RequestShowComponent = (props) => {
         })
       }  
     })
-  },[]);
+  },[props]);
 
-  console.log(request);
-  
+
   //FUNCTIONS FOR USER INTERACTION WITH REQUEST OBJECT
   const redirectToEdit = () => {
     navigate(`/dashboard/requests/${props.requestId}/edit`)

@@ -5,24 +5,23 @@ import UserQuery from "../queries/UserQuery";
 import "./RequestShow.css"
 
 const RequestShow = (props) => {
-  console.log(props);
-  console.log(props);
+  // console.log(props.auth.userId)
   let requestId = useParams().requestid
 
-  const [state, setState] = useState({
-    userId: "",
-    cats: []
-  })
+  // const [state, setState] = useState({
+  //   userId: "",
+  //   cats: []
+  // })
 
-  useEffect(() => {
-    UserQuery.show(props.auth.userId)
-    .then(data => {
-      setState({
-        userId: data._id,
-        cats: data.cats
-      })
-    })
-  }, [])
+  // useEffect(() => {
+  //   UserQuery.show(props.auth.userId)
+  //   .then(data => {
+  //     setState({
+  //       userId: data._id,
+  //       cats: data.cats
+  //     })
+  //   })
+  // }, [])
 
   return(
     <div className="request-show-wrapper">
@@ -30,9 +29,8 @@ const RequestShow = (props) => {
       <div className="requests-available">
         <RequestShowComponent
           requestId={requestId}
-          userId={state.userId}
-          cats={state.cats}
-
+          userId={props.auth.userId}
+          // cats={state.cats}
         />
       </div>  
     </div>
