@@ -53,10 +53,15 @@ const AvailableRequest = (props) => {
             <p className="p-pills">{schedule.start}</p>
             <p className="p-pills">{schedule.end}</p>
           </div>
-          <div className="requests-made-right">
-            <p className="p-pills">Posted by: {requester.creator}</p>
-            <p className="p-pills">Apartment #{requester.apartment}</p>
-          </div>
+          {props.user !== requester.creatorId 
+            ? <div className="requests-made-right">
+                <p className="p-pills">Posted by: {requester.creator}</p>
+                <p className="p-pills">Apartment #{requester.apartment}</p>
+              </div>
+            : <div className="requests-made-right">  
+                <p className="p-pills">Posted by: Me</p>
+              </div>  
+          }
         </div>  
         {requester.cats.map((cat, index) => {
           return  <AvailableRequestCat
@@ -66,7 +71,7 @@ const AvailableRequest = (props) => {
         })}
         {props.user !== requester.creatorId 
           ? <p className="p-accept-request" onClick={() => handleAcceptRequest()}>Accept Request</p>
-          : <Link to={`/dashboard/requests/${schedule.id}`}>View Request</Link>
+          : <Link className="p-view-own-request" to={`/dashboard/requests/${schedule.id}`}>View Request</Link>
         }
       </div>
     </div>  
