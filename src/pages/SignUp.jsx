@@ -88,7 +88,7 @@ const SignUp = () => {
             <input type="submit" className="submit" value="Create User"/>
           </div>
         </form>
-        <Link to={"/login"}><p className="p-login-link">Already have an account with us? Click here to log in!</p></Link>
+        <Link className="p-login-link" to={"/login"}><p>Already have an account with us? Click here to log in!</p></Link>
       </div>
     </div>
   );

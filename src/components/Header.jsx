@@ -6,7 +6,7 @@ const Header = (props) => {
     <div className="header">
       <div className="left">
         <div className="placeholder"></div>
-        <h2>Catsitting</h2>
+        <h2 className="nav-text">Catsitting</h2>
       </div>  
       <Nav 
         loggedIn={props.auth.loggedIn}

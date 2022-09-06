@@ -26,6 +26,15 @@
   padding: 5px;
 }
 
+.p-signup-link {
+  text-decoration: none;
+  color: black;
+}
+
+.p-signup-link:hover {
+  transform: scale(1.1)
+}
+
 input {
   padding: 5px;
 }

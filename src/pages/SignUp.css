@@ -6,6 +6,16 @@
   font-size: 12px;
 }
 
+.p-login-link {
+  text-decoration: none;
+  color: black;
+}
+
+.p-login-link:hover {
+  transform: scale(1.1)
+}
+
+
 @media (min-width: 600px) {
   .p-signup {
     font-size: 16px;

@@ -10,11 +10,11 @@ const Landing = () => {
       <div className="landing-features">
         <div className="landing-request-catsitter">
           <h1>Request a Catsitter</h1>
-          <p className="p-landing">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p className="p-landing">Populate your profile with your cats and request catsitting sessions from your neighbors for those times you're out of town.</p>
         </div>
         <div className="landing-book-catsitting">
           <h1>Book a Catsitting</h1>
-          <p className="p-landing">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <p className="p-landing">Help your neighbors out by browsing the available request board and accepting available catsitting requests. </p>
         </div>
       </div>  
     </div>

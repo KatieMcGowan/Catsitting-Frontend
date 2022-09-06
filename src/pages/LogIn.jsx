@@ -76,7 +76,7 @@ const LogIn = (props) => {
             <input type="submit" className="submit" value="Log In"/>
           </div>
         </form>
-        <Link to={"/signup"}><p className="p-signup-link">Don't have an account with us? Click here to sign up!</p></Link>
+        <Link className="p-signup-link" to={"/signup"}><p>Don't have an account with us? Click here to sign up!</p></Link>
       </div>
     </div>
   );
