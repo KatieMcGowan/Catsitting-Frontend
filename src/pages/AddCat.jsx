@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CatQuery from "../queries/CatQuery"
 import "./AddCat.css";
 
 const AddCat = (props) => {
+  // AUTH CHECK
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+
+  useEffect(() => {
+    authCheck()
+  }, []);
+
   let navigate = useNavigate();
 
   //CAT OBJECT STATE

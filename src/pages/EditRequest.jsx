@@ -4,7 +4,15 @@ import RequestQuery from "../queries/RequestQuery"
 import "./NewRequest.css"
 
 const EditRequest = (props) => {
+  // AUTH CHECK
   let navigate = useNavigate();
+
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+
   let requestId = useParams().requestid;
 
   //PLACEHOLDER WITH OLD REQUEST STATE
@@ -14,6 +22,7 @@ const EditRequest = (props) => {
   });
 
   useEffect(() => {
+    authCheck();
     RequestQuery.show(requestId)
     .then(request => {
       setRequest({

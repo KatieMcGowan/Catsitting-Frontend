@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import RequestShowComponent from "../components/RequestShow"
-import UserQuery from "../queries/UserQuery";
 import "./RequestShow.css"
 
 const RequestShow = (props) => {
-  // console.log(props.auth.userId)
+  // AUTH CHECK
+  let navigate = useNavigate();
+  
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+
+  useEffect(() => {
+    authCheck();
+  })
+
   let requestId = useParams().requestid
-
-  // const [state, setState] = useState({
-  //   userId: "",
-  //   cats: []
-  // })
-
-  // useEffect(() => {
-  //   UserQuery.show(props.auth.userId)
-  //   .then(data => {
-  //     setState({
-  //       userId: data._id,
-  //       cats: data.cats
-  //     })
-  //   })
-  // }, [])
 
   return(
     <div className="request-show-wrapper">

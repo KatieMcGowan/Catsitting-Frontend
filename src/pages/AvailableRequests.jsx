@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestQuery from "../queries/RequestQuery"
 import AvailableRequestsContainer from "../components/AvailableRequestsContainer";
 import "./AvailableRequests.css"
 
 const AvailableRequests = (props) => {
+  // AUTH CHECK
+  let navigate = useNavigate();
+
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+
   const [availableRequests, setAvailableRequests] = useState([]);
 
   useEffect(() => {
+    authCheck();
     let available = []
     RequestQuery.all()
     .then(requests => {

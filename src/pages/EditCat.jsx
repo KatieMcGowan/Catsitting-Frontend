@@ -4,7 +4,14 @@ import CatQuery from "../queries/CatQuery"
 import RequestQuery from "../queries/RequestQuery"
 import "./AddCat.css"
 
-const EditCat = () => {
+const EditCat = (props) => {
+  // AUTH CHECK
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+  
   let navigate = useNavigate();
   let catId = useParams().catid;
 
@@ -19,10 +26,11 @@ const EditCat = () => {
     additionalnotes: "",
   });
 
-  const [affiliated, setAffiliated] = useState(false)
+  // const [affiliated, setAffiliated] = useState(false)
 
   //POPULATES FORM PLACEHOLDERS
   useEffect(() => {
+    authCheck()
     CatQuery.show(catId)
     .then(cat => setCat({
       catname: cat.catname,

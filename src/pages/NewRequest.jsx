@@ -5,7 +5,14 @@ import UserQuery from "../queries/UserQuery"
 import "./NewRequest.css"
 
 const NewRequest = (props) => {
+  // AUTH CHECK
   let navigate = useNavigate();
+
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
 
   const [state, setState] = useState({
     start: "",
@@ -19,6 +26,7 @@ const NewRequest = (props) => {
   })
   
   useEffect(() => {
+    authCheck()
     UserQuery.show(props.auth.userId)
     .then(user => {
       setUser({

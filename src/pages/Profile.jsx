@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CatsContainer from "../components/CatsContainer";
 import UserQuery from "../queries/UserQuery";
 import "./Profile.css"
 
 const Profile = (props) => {
+  // AUTH CHECK
+  let navigate = useNavigate();
+
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
+  
   const [profile, setProfile] = useState({
     displayname: "",
     username: "",
@@ -11,7 +21,9 @@ const Profile = (props) => {
     cats: []
   });
 
+
   useEffect(() => {
+    authCheck();
     UserQuery.show(props.auth.userId)
     .then(data => {
       setProfile({

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RequestsMadeContainer from "../components/RequestsMadeContainer";
 import RequestsAcceptedContainer from "../components/RequestsAcceptedContainer";
 import "./Dashboard.css";
@@ -12,17 +12,17 @@ const Dashboard = (props) => {
     requestsaccepted: [],
   });
 
-  //AUTH CHECK
-  // let navigate = useNavigate();
+  // AUTH CHECK
+  let navigate = useNavigate();
 
-  // const authCheck = () => {
-  //   if (!props.auth.loggedIn) {
-  //     navigate("/login")
-  //   } else return;
-  // };
+  const authCheck = () => {
+    if (!props.auth.loggedIn) {
+      navigate("/login")
+    } else return;
+  };
 
   useEffect(() => {
-    // authCheck();
+    authCheck();
     UserQuery.show(props.auth.userId)
     .then (user => {
       setUser({
