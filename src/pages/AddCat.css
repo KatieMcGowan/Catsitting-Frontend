@@ -49,10 +49,12 @@ label {
   font-size: 12px;
   margin: 10px 0 0 0;
   text-align: center;
+  color: rgb(239, 130, 130);
 }
 
 .remove-cat:hover {
   cursor: pointer;
+  transform: scale(1.15)
 }
 
 @media (min-width: 850px) {

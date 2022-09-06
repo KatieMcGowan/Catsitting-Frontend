@@ -14,8 +14,6 @@ const LogIn = (props) => {
   const [users, setUsers] = useState({})
 
   const [error, setError] = useState(false)
-//PSUEDOCODE
-//if, on submit, log in fails in 
 
   useEffect(() => {
     UserQuery.all()

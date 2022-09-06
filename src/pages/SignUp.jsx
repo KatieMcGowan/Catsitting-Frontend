@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom";
 import UserQuery from "../queries/UserQuery"
 import "./SignUp.css"
@@ -6,6 +6,7 @@ import "./SignUp.css"
 const SignUp = () => {
   let navigate = useNavigate();
 
+  //INPUT STATE FOR USER CREATION
   const [state, setState] = useState({
     displayname: "",
     apartment: "",
@@ -13,19 +14,47 @@ const SignUp = () => {
     password: "",
   })
 
+  //USERS STATE FOR VALIDATING IF USERNAME OR APARTMENT ALREADY EXISTS
+  const [users, setUsers] = useState({})
+
+  //STATES FOR DISPLAYING ERRORS
+  const [userNameError, setUsernameError] = useState(false)
+
+  const [apartmentError, setApartmentError] = useState(false)
+
+  useEffect(() => {
+    UserQuery.all()
+    .then(data => {
+      setUsers({
+        users: data
+      });
+    });
+  }, []);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setUsernameError(false);
+    setApartmentError(false);
+    for (let i = 0; i < users.users.length; i++ ){
+      if (users.users[i].username === state.username) {
+        setUsernameError(true)
+        return;
+      } else if (users.users[i].apartment === state.apartment) {
+        setApartmentError(true)
+        return;
+      } 
+    }
+    UserQuery.create(state)
+      .then(data => {
+      navigate("/login")
+      })
+  };
+
   const handleChange = (event) => {
     setState({
       ...state,
       [event.target.name]: event.target.value
     });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    UserQuery.create(state)
-    .then(data => {
-      navigate("/login")
-    })
   };
 
   return(
@@ -88,6 +117,8 @@ const SignUp = () => {
             <input type="submit" className="submit" value="Create User"/>
           </div>
         </form>
+        <p className={userNameError ? "error" : "no-error"}>Username has already been taken, please choose a different one.</p>
+        <p className={apartmentError ? "error" : "no-error"}>Apartment Number has already been claimed, please choose a different one.</p>
         <p>Already have an account with us? Click <Link className="p-login-link" to={"/login"}>here</Link> to log in!</p>
       </div>
     </div>
