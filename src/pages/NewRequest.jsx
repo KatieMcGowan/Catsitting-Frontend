@@ -52,35 +52,35 @@ const NewRequest = (props) => {
         <h1>New Request</h1>
         <p className="p-new-request">Just tell us the start date and end date, and we'll populate your cat's information for you on the request!</p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="new-request-form">
-          <div className="new-request-form-input">
-            <label htmlFor="startdate">Start Date</label>
-            <input
-              type="datetime-local"
-              name="start"
-              required={true}
-              onChange={handleChange}
-              value={state.start}
-            />
-          </div>
-          <div className="new-request-form-input">  
-          <label htmlFor="enddate">End Date</label>
-            <input
-              type="datetime-local"
-              name="end"
-              required={true}
-              onChange={handleChange}
-              value={state.end}
-            />
-          </div> 
-          <div className="new-request-form-input">
-            <input type="submit" className="submit" value="Request"/>
-          </div>
-        </div>  
-      </form>
-      {user.cats.length === 0 && 
-      <p>No cats currently added to your profile. Click <Link to={"/dashboard/addcat"}>here</Link> to add a cat, then make a request.</p>
+      {user.cats.length === 0 
+        ? <p className="no-cat-for-request">No cats currently added to your profile. Click <Link className="add-cat-from-request" to={"/dashboard/addcat"}>here</Link> to add a cat, then make a request.</p>
+        : <form onSubmit={handleSubmit}>
+            <div className="new-request-form">
+              <div className="new-request-form-input">
+                <label htmlFor="startdate">Start Date</label>
+                <input
+                  type="datetime-local"
+                  name="start"
+                  required={true}
+                  onChange={handleChange}
+                  value={state.start}
+                />
+              </div>
+              <div className="new-request-form-input">  
+              <label htmlFor="enddate">End Date</label>
+                <input
+                  type="datetime-local"
+                  name="end"
+                  required={true}
+                  onChange={handleChange}
+                  value={state.end}
+                />
+              </div> 
+              <div className="new-request-form-input">
+                <input type="submit" className="submit" value="Request"/>
+              </div>
+            </div>  
+          </form>
       }
     </div>
   );
