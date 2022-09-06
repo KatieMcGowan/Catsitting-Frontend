@@ -5,6 +5,7 @@ import RequestQuery from "../queries/RequestQuery";
 import RequestShowCat from "./RequestShowCat";
 
 const RequestShowComponent = (props) => {
+  console.log(props);
   let navigate = useNavigate();
   
   //REQUEST STATE FOR DISPLAY
@@ -96,6 +97,8 @@ const RequestShowComponent = (props) => {
     })
   },[]);
 
+  console.log(request);
+  
   //FUNCTIONS FOR USER INTERACTION WITH REQUEST OBJECT
   const redirectToEdit = () => {
     navigate(`/dashboard/requests/${props.requestId}/edit`)

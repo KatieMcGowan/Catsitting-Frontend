@@ -13,6 +13,10 @@ const LogIn = (props) => {
 
   const [users, setUsers] = useState({})
 
+  const [error, setError] = useState(false)
+//PSUEDOCODE
+//if, on submit, log in fails in 
+
   useEffect(() => {
     UserQuery.all()
     .then(data => {
@@ -36,7 +40,9 @@ const LogIn = (props) => {
         let user = users.users[i]._id
         props.authSet(true,user)
         navigate("/dashboard")
-      };
+      } else {
+        setError(true)
+      }
     };
   };
 
@@ -76,7 +82,8 @@ const LogIn = (props) => {
             <input type="submit" className="submit" value="Log In"/>
           </div>
         </form>
-        <Link className="p-signup-link" to={"/signup"}><p>Don't have an account with us? Click here to sign up!</p></Link>
+        <p className={error ? "error" : "no-error"}>Invalid username or password, please try again.</p>
+        <p>Don't have an account with us? Click <Link className="p-signup-link" to={"/signup"}>here</Link> to sign up!</p>
       </div>
     </div>
   );

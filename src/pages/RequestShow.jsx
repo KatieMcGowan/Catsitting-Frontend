@@ -5,6 +5,7 @@ import UserQuery from "../queries/UserQuery";
 import "./RequestShow.css"
 
 const RequestShow = (props) => {
+  console.log(props);
   let requestId = useParams().requestid
 
   const [state, setState] = useState({

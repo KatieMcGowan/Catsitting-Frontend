@@ -43,7 +43,7 @@ const Dashboard = (props) => {
             <Link to={"/dashboard/requests/new"} className="addbutton">+</Link>
           </div>  
           {user.requestsmade.length === 0 
-            ? <p className="no-requests">You haven't made any requests yet. Click <Link to={"/dashboard/requests/new"}>here </Link> to add a request!</p>
+            ? <p className="no-requests">You haven't made any requests yet. Click <Link className="dashboard-here" to={"/dashboard/requests/new"}>here </Link> to add a request!</p>
             : <RequestsMadeContainer
                 requestsmade={user.requestsmade}
               />  
@@ -53,7 +53,7 @@ const Dashboard = (props) => {
             <Link to={"/dashboard/requests"} className="browse">Browse</Link>
           </div>  
           {user.requestsaccepted.length === 0 
-            ? <p className="no-requests">You haven't accepted any requests yet. Click <Link to={"/dashboard/requests"}>here</Link> to view catsitting requests!</p>
+            ? <p className="no-requests">You haven't accepted any requests yet. Click <Link className="dashboard-here" to={"/dashboard/requests"}>here</Link> to view catsitting requests!</p>
             : <RequestsAcceptedContainer
                 requestsaccepted={user.requestsaccepted}
               />  

@@ -24,7 +24,7 @@ const SignUp = () => {
     event.preventDefault();
     UserQuery.create(state)
     .then(data => {
-      navigate("/")
+      navigate("/login")
     })
   };
 
@@ -32,7 +32,7 @@ const SignUp = () => {
     <div className="signup-wrapper">
       <div className="signup-header">
         <h1>Sign Up</h1>
-        <p className="p-signup">Create an account with us to view your neighbor's catsitting requests and request catsitting from your neighbors.</p>
+        <p className="p-signup">Create an account with us to view your neighbor's catsitting requests and request catsitting from your neighbors. Upon account creation, you will be redirected to the login page.</p>
       </div>
       <div className="signup-form">
         <form onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ const SignUp = () => {
             <input type="submit" className="submit" value="Create User"/>
           </div>
         </form>
-        <Link className="p-login-link" to={"/login"}><p>Already have an account with us? Click here to log in!</p></Link>
+        <p>Already have an account with us? Click <Link className="p-login-link" to={"/login"}>here</Link> to log in!</p>
       </div>
     </div>
   );

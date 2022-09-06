@@ -8,13 +8,8 @@
 
 .p-login-link {
   text-decoration: none;
-  color: black;
+  color: rgb(49, 152, 230)
 }
-
-.p-login-link:hover {
-  transform: scale(1.1)
-}
-
 
 @media (min-width: 600px) {
   .p-signup {

@@ -26,13 +26,19 @@
   padding: 5px;
 }
 
-.p-signup-link {
-  text-decoration: none;
-  color: black;
+
+.error {
+  color: rgb(239, 130, 130);
+  margin: 0 0 10px 0;
 }
 
-.p-signup-link:hover {
-  transform: scale(1.1)
+.no-error {
+  display: none;
+}
+
+.p-signup-link {
+  text-decoration: none;
+  color: rgb(49, 152, 230)
 }
 
 input {

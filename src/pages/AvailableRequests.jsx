@@ -22,7 +22,7 @@ const AvailableRequests = (props) => {
   return(
     <div className="available-requests-wrapper">
       <h1 className="available-requests-header">Available Requests</h1>
-      <div className="requests-available">
+      {/* <div className="requests-available"> */}
         {/* <div className="your-cat-pill"> */}
         {availableRequests.length === 0 
             ? <p className="no-requests">No available requests</p> 
@@ -57,7 +57,7 @@ const AvailableRequests = (props) => {
           </div>
         <div className="p-accept-request">Accept Request</div> */}
         {/* </div> */}
-      </div>
+      {/* </div> */}
     </div>
   )
 }

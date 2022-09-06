@@ -15,7 +15,6 @@
 
 .p-requests-dashboard {
   font-size: 12px;
-  /* margin: 0 0 0 20px; */
 }
 
 .p-pills {
@@ -38,14 +37,30 @@
   margin: 0 0 10px 0;
 }
 
-button {
-  background-color: pink;
-  border-radius: 30px;
-  padding: 5px;
+
+.addbutton {
+  font-size: 16px;
+  text-decoration: none;
+  color: rgb(49, 152, 230);
+}
+
+.addbutton:hover {
+  transform: scale(1.5)
 }
 
 .browse {
   font-size: 12px;
+  text-decoration: none;
+  color: rgb(49, 152, 230);
+}
+
+.browse:hover {
+  transform: scale(1.15)
+}
+
+.dashboard-here {
+  text-decoration: none;
+  color: rgb(49, 152, 230)
 }
 
 .no-requests {
@@ -63,7 +78,7 @@ button {
   align-items: center;
   padding: 10px;
   min-height: 50px;
-  width: 70%;
+  width: 90%;
   margin: 0 0 10px 0;
 }
 
@@ -87,8 +102,8 @@ button {
 }
 
 .requests-accepted-wrapper {
-  background-color: mediumslateblue;
-  border: solid 3px purple;
+  background-color: rgb(76, 239, 171);
+  border: solid 3px rgb(14, 198, 103);
   border-radius: 30px;
   display: flex;
   flex-direction: row;
