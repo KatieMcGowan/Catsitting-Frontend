@@ -53,17 +53,10 @@ const App = () => {
 
 export default App;
 
-//MASTER LIST OF THINGS TO CLEAN UP:
-//>CSS formatting on pages
-//>User auth not disappearing on refresh
-//>Once an object is created, it not populating on redirected page
-//>When cat object is deleted, profile populates an empty pill until user is logged out
-//>Get placeholder start/end times to work for edit request page
-//>Dashboard only shows two "request made" and "request accepted" objects even if there are more on the backend
-
 //BIG FEATURE FIXES; 
-//> CSS formatting on pages
+//> User auth not disappearing on refresh
+//> Get placeholder start/end times to work for edit request page
 //> Update schema to allow only two cats
 //> Have error messages appear on cat creation page stating that only two cats are allowed
 //> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
-//> You should not be allowed to accept your own request
+//> Figure out add medication and additional notes

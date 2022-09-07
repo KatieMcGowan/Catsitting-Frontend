@@ -44,14 +44,10 @@ const NewRequest = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (user.cats.length === 0) {
-      return;
-    } else {
-      RequestQuery.create(state)
-      .then(data => {
-        navigate("/dashboard")
-      })
-    };
+    RequestQuery.create(state)
+    .then(data => {
+      navigate("/dashboard")
+    });
   };
 
   return(
@@ -80,6 +76,7 @@ const NewRequest = (props) => {
                   type="datetime-local"
                   name="end"
                   required={true}
+                  min={state.start}
                   onChange={handleChange}
                   value={state.end}
                 />

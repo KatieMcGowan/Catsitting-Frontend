@@ -64,7 +64,7 @@ const EditRequest = (props) => {
     <div className="new-request-wrapper">
       <div className="new-request-header">
         <h1>Edit Request</h1>
-        <p className="p-new-request">Be sure to communicate request changes to your catsitter, and make sure your cat's info is up to date on your profile!</p>
+        <p className="p-new-request">Make sure your cat's info is up to date on your profile, and communicate any changes with your catsitter if your request has been accepted.</p>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="new-request-form">
@@ -86,6 +86,7 @@ const EditRequest = (props) => {
               name="end"
               placeholder={request.end}
               required={true}
+              min={updatedRequest.start}
               onChange={handleChange}
               value={updatedRequest.end}
             />
