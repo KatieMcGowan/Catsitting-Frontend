@@ -5,6 +5,8 @@ import "./AddCat.css";
 
 const AddCat = (props) => {
   // AUTH CHECK
+  let navigate = useNavigate();
+
   const authCheck = () => {
     if (!props.auth.loggedIn) {
       navigate("/login")
@@ -15,9 +17,10 @@ const AddCat = (props) => {
     authCheck()
   }, []);
 
-  let navigate = useNavigate();
+  const [medications, setMedication] = useState([])
 
-  //CAT OBJECT STATE
+  const [additionalNotes, setNotes] = useState([])
+
   const [state, setState] = useState({
     catname: "",
     age: "",
@@ -25,23 +28,59 @@ const AddCat = (props) => {
     feeding: "",
     user: props.auth.userId,
     personality: "",
-    medication: "",
-    additionalnotes: "",
   });
-
+  
   const handleChange = (event) => {
     setState({
       ...state,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    CatQuery.create(state)
+    let newState = state;
+    newState.medication = medications;
+    newState.additionalnotes = additionalNotes
+    CatQuery.create(newState)
     .then(data => {
       navigate("/dashboard/profile")
     })
+  };
+
+  //MEDICATION AND ADDITIONAL NOTES FUNCTIONS
+  const handleMedicationFormChange = (index, event) => {
+    let data = [...medications]
+    data[index][event.target.name] = event.target.value
+    setMedication(data)
+  };
+
+  const handleNotesFormChange = (index, event) => {
+    let data = [...additionalNotes]
+    data[index][event.target.name] = event.target.value
+    setNotes(data)
+  };
+
+  const addMedicationFields = () => {
+    let newField = { medication: ""}
+    setMedication([...medications, newField])
+  }
+
+  const addNotesFields = () => {
+    let newField = { additionalnote: "" }
+    setNotes([...additionalNotes, newField])
+  }
+  
+  const removeMedicationFields = (index) => {
+    let data = [...medications]
+    data.splice(index,1)
+    setMedication(data)
+  };
+  
+  const removeNotesFields = (index) => {
+    let data = [...additionalNotes]
+    data.splice(index,1)
+    setNotes(data)
   };
 
   return(
@@ -124,29 +163,47 @@ const AddCat = (props) => {
               />
             </div>
             <div className="new-cat-form-input">
-              <label htmlFor="medication">Medication</label>
-              <input
-                type="text"
-                name="medication"
-                minLength="0"
-                maxLength="100"
-                required={false}
-                onChange={handleChange}
-                value={state.medication}
-              /> 
+              <div className="dynamic-care">
+                <label htmlFor="medication">Medication</label>
+                <p className="dynamic-button" onClick={addMedicationFields}>+</p>
+              </div>
+              {medications.map((medication, index) => {
+                return(
+                  <div className="dynamic-care" key={index}>
+                    <input
+                      type="text"
+                      minLength="1"
+                      maxLength="100"
+                      name="medication"
+                      value={medication.medication}
+                      onChange={event => handleMedicationFormChange(index, event)}
+                    />
+                    <p className="dynamic-button" onClick={() => removeMedicationFields(index)}>-</p>
+                  </div>
+                )
+              })}
             </div>
             <div className="new-cat-form-input">
-              <label htmlFor="additionalnotes">Additional Notes</label>
-              <input
-                type="text"
-                name="additionalnotes"
-                minLength="0"
-                maxLength="100"
-                required={false}
-                onChange={handleChange}
-                value={state.additionalnotes}
-              /> 
-            </div> 
+              <div className="dynamic-care">
+                <label htmlFor="additionalnotes">Additional Notes</label>
+                <p className="dynamic-button" onClick={addNotesFields}>+</p>
+              </div>
+              {additionalNotes.map((additionalnote, index) => {
+                return(
+                  <div className="dynamic-care" key={index}>
+                    <input
+                      type="text"
+                      minLength="1"
+                      maxLength="100"
+                      name="additionalnote"
+                      value={additionalnote.additionalnote}
+                      onChange={event => handleNotesFormChange(index, event)}
+                    />
+                    <p className="dynamic-button" onClick={() => removeNotesFields(index)}>-</p>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
         <div className="new-cat-form-input"> 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
+import Medications from "./Medications";
 import CatQuery from "../queries/CatQuery";
+import AdditionalNotes from "./AdditionalNotes";
 
 const Cat = (props) => {
   const [catObject, setCatObject] = useState({
@@ -47,11 +49,21 @@ const Cat = (props) => {
             </div>
             <div className="p-care-instructions">
               <p className="p-care-header">Medication:</p>
-              <p className="p-pills">{catObject.medication}</p>
+              {catObject.medication.map((medication, index) => {
+                return  <Medications
+                          key={index}
+                          medication={medication}
+                        />  
+              })}
             </div>  
             <div className="p-care-instructions">
               <p className="p-care-header">Additional Notes:</p>
-              <p className="p-pills">{catObject.additionalnotes}</p>
+              {catObject.additionalnotes.map((additionalnote, index) => {
+                return  <AdditionalNotes
+                          key={index}
+                          additionalnote={additionalnote}
+                        />  
+              })}
             </div>  
           </div>
         </div>  

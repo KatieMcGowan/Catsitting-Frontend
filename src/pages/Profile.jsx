@@ -21,7 +21,6 @@ const Profile = (props) => {
     cats: []
   });
 
-
   useEffect(() => {
     authCheck();
     UserQuery.show(props.auth.userId)

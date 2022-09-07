@@ -16,6 +16,7 @@ class CatQuery {
   };
 
   static create = (catData) => {
+    console.log('Hit Route')
     return fetch (`${url}`, {
       method: "POST",
       headers: {
@@ -24,6 +25,7 @@ class CatQuery {
       body: JSON.stringify(catData)
     })
     .then(response => response.json())
+    .catch(err => console.log(err))
   };
   
   static update = (id, catData) => {
