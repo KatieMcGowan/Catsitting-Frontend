@@ -22,8 +22,6 @@ const EditCat = (props) => {
     breed: "",
     feeding: "",
     personality: "",
-    // medication: "",
-    // additionalnotes: "",
   });
 
   //POPULATES FORM PLACEHOLDERS

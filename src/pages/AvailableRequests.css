@@ -13,8 +13,6 @@
 .individual-request-wrapper {
   display: flex;
   flex-direction: column;
-  /* flex-direction: row;
-  justify-content: space-between; */
   align-items: center;
   padding: 10px;
   min-height: 50px;
@@ -62,6 +60,10 @@
 .p-accept-request:hover {
   cursor: pointer;
   transform: scale(1.15)
+}
+
+li {
+  margin: 0 0 0 20px;
 }
 
 @media (min-width: 600px) {

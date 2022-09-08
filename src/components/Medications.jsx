@@ -1,6 +1,9 @@
 const Medications = (props) => {
   return(
-    <p className="p-pills">{props.medication.medication}</p>
+    <ul>
+      <li className="p-pills">{props.medication.medication}</li>
+    </ul>
+    // <p className="p-pills">{props.medication.medication}</p>
   )
 }
 

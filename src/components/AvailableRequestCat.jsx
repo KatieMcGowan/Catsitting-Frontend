@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Medications from "./Medications";
+import AdditionalNotes from "./AdditionalNotes";
 import CatQuery from "../queries/CatQuery";
 
 const AvailableRequestCat = (props) => {
-
   const [cat, setCat] = useState({
     catname: "",
     age: "",
@@ -47,11 +48,21 @@ const AvailableRequestCat = (props) => {
           </div>
           <div className="p-care-instructions">
             <p className="p-care-header">Medication</p>
-            <p className="p-pills">{cat.medication}</p>
+            {cat.medication.map((medication, index) => {
+                return  <Medications
+                          key={index}
+                          medication={medication}
+                        />  
+              })}
           </div>  
           <div className="p-care-instructions">
             <p className="p-care-header">Additional Notes</p>
-            <p className="p-pills">{cat.additionalnotes}</p> 
+            {cat.additionalnotes.map((additionalnote, index) => {
+                return  <AdditionalNotes
+                          key={index}
+                          additionalnote={additionalnote}
+                        />  
+              })}
           </div>  
         </div>
       </div>  

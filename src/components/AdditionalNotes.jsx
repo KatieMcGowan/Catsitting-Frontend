@@ -1,6 +1,9 @@
 const AdditionalNotes = (props) => {
   return(
-    <p className="p-pills">{props.additionalnote.additionalnote}</p>
+    <ul>
+      <li className="p-pills">{props.additionalnote.additionalnote}</li>
+    </ul>
+    // <p className="p-pills">{props.additionalnote.additionalnote}</p>
   )
 }
 
