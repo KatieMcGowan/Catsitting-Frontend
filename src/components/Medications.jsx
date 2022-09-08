@@ -3,7 +3,6 @@ const Medications = (props) => {
     <ul>
       <li className="p-pills">{props.medication.medication}</li>
     </ul>
-    // <p className="p-pills">{props.medication.medication}</p>
   )
 }
 

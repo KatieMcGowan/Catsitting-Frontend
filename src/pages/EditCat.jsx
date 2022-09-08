@@ -95,8 +95,16 @@ const EditCat = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     let newState = updatedCat;
-    newState.medication = medications;
-    newState.additionalnotes = additionalNotes
+    if (medications.length === 0) {
+      newState.medication = {medication: "N/A"}
+    } else {
+      newState.medication = medications;
+    }
+    if (additionalNotes.length === 0) {
+      newState.additionalnotes = {additionalnote: "N/A"}
+    } else {
+      newState.additionalnotes = additionalNotes
+    }
     CatQuery.update(catId, updatedCat)
     .then(data => {
       navigate("/dashboard/profile")

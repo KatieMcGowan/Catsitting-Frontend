@@ -16,7 +16,6 @@ class CatQuery {
   };
 
   static create = (catData) => {
-    console.log('Hit Route')
     return fetch (`${url}`, {
       method: "POST",
       headers: {

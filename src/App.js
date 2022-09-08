@@ -12,8 +12,6 @@ import Profile from "./pages/Profile";
 import RequestShow from "./pages/RequestShow";
 import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
-//PAGE FOR TESTING OUT HOW TO INPUT MEDICATION/ADDITIONAL NOTES
-import TestCat from "./pages/testCat";
 
 const App = () => {
   //AUTH STATES
@@ -45,7 +43,6 @@ const App = () => {
         <Route path={"/dashboard/requests/:requestid"} element={<RequestShow auth={auth} />} />
         <Route path={"/dashboard/requests/:requestid/edit"} element={<EditRequest auth={auth} />} />
         <Route path={"/dashboard/requests/new"} element={<NewRequest auth={auth} />} />
-        <Route path={"/testcat"} element={<TestCat />} />
       </Routes>
     </div>  
   );
@@ -60,5 +57,4 @@ export default App;
 //> Have error messages appear on cat creation page stating that only two cats are allowed
 //> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
 //> Add delete modals
-//> Figure out add medication and additional notes
 //> Messaging system
