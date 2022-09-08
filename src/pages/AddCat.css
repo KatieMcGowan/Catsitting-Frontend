@@ -1,6 +1,6 @@
 .add-cat-header {
   font-size: 18px;
-  margin: 15px;
+  margin: 30px 50px;
 }
 
 form {
@@ -29,6 +29,7 @@ form {
 .new-cat-form-input {
   display: flex;
   flex-direction: column;
+  padding: 5px;
 }
 
 label {
@@ -53,7 +54,7 @@ label {
 }
 
 .dynamic-button {
-  font-size: 16px;
+  font-size: 20px;
   text-decoration: none;
   color: rgb(49, 152, 230);
   margin: 0 0 0 10px;

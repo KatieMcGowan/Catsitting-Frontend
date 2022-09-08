@@ -1,5 +1,5 @@
 .new-request-wrapper {
-  margin: 15px;
+  margin: 30px 50px;
 }
 
 .new-request-header {
@@ -41,9 +41,6 @@
   margin: 10px 0 0 0;
   text-align: center;
   padding: 5px;
-  /* border: solid 3px rgb(235, 58, 58);
-  border-radius: 5px;
-  background-color: rgb(239, 130, 130); */
   color: rgb(239, 130, 130);
 }
 

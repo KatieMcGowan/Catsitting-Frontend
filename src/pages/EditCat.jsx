@@ -105,17 +105,31 @@ const EditCat = (props) => {
     } else {
       newState.additionalnotes = additionalNotes
     }
+    if (updatedCat.personality === "") {
+      newState.personality = "Friendly"
+    }
     CatQuery.update(catId, updatedCat)
     .then(data => {
       navigate("/dashboard/profile")
     })
   };
 
+    //DELETE FUNCTIONALITY
   const handleDelete = () => {
     CatQuery.delete(catId)
     .then(data => {
-      navigate("/dashboard")
+      navigate("/dashboard/profile")
     })
+  };
+
+  const [deleteModal, setModal] = useState(false)
+
+  const toggleDeleteModal = () => {
+    if (deleteModal === false) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }  
   };
 
   return(
@@ -247,10 +261,19 @@ const EditCat = (props) => {
           </div>
         </div>
         <div className="new-cat-form-input"> 
-          <input type="submit" className="submit" value="Edit Cat"/>
+          <input type="submit" className="submit" value="Submit"/>
         </div>
       </form>
-      <p className="remove-cat" onClick={() => handleDelete()}>Remove your cat's information</p>  
+      {deleteModal === false
+        ? <p className="delete-request" onClick={() => toggleDeleteModal()}>Remove Cat Info</p>
+        : <div>
+            <p className="delete-confirm">Are you sure you want to remove your cat's info?</p>
+            <div className="delete-yes-no">
+              <p className="confirm" onClick={() => handleDelete()}>Yes</p>
+              <p className="confirm" onClick={() => toggleDeleteModal()}>No</p>
+            </div>
+          </div>
+        }  
     </div>
   )
 }

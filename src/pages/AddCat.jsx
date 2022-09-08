@@ -50,6 +50,9 @@ const AddCat = (props) => {
     } else {
       newState.additionalnotes = additionalNotes
     }
+    if (state.personality === "") {
+      newState.personality = "Friendly"
+    }
     CatQuery.create(newState)
     .then(data => {
       navigate("/dashboard/profile")
@@ -215,7 +218,7 @@ const AddCat = (props) => {
           </div>
         </div>
         <div className="new-cat-form-input"> 
-          <input type="submit" className="submit" value="Add Cat"/>
+          <input type="submit" className="submit" value="Submit"/>
         </div>
       </form>  
     </div>

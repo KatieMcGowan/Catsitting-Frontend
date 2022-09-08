@@ -32,7 +32,7 @@ const Cat = (props) => {
   return(
     <div className="your-cat-pill">
       <div className="cat-info">
-        <div>
+        <div className="cats-left-wrapper">
           <p className="p-cat-header">{catObject.catname}</p>
           <div className="cats-left">
             <p className="p-pills">Age: {catObject.age}</p>
@@ -40,7 +40,8 @@ const Cat = (props) => {
             <p className="p-pills">Personality: {catObject.personality}</p>
           </div>
         </div>
-        <div>  
+        <div className="cats-middle"></div>
+        <div className="cats-right-wrapper">  
           <p className="p-cat-header">Care Instructions</p>
           <div className="cats-right">
             <div className="p-care-instructions">

@@ -1,5 +1,5 @@
 .dashboard-wrapper {
-  margin: 15px
+  margin: 30px 50px;
 }
 
 .p-dashboard-header {
@@ -30,6 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 0 30px 0;
 }
 
 .requests-made-header {
@@ -39,7 +40,7 @@
   align-items: center;
   align-self: center;
   width: 90%;
-  margin: 0 0 10px 0;
+  margin: 10px 0 10px 0;
 }
 
 .browse {
