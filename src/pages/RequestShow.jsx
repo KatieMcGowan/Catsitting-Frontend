@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import RequestShowComponent from "../components/RequestShow"
 import "./RequestShow.css"
@@ -26,7 +26,6 @@ const RequestShow = (props) => {
         <RequestShowComponent
           requestId={requestId}
           userId={props.auth.userId}
-          // cats={state.cats}
         />
       </div>  
     </div>

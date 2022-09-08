@@ -43,9 +43,7 @@ const Dashboard = (props) => {
             <Link to={"/dashboard/requests/new"} className="browse">Add Request</Link>
           </div>  
           {user.requestsmade.length === 0 
-            ? <div>
-                <p className="no-requests">You haven't made any requests yet. Click the "Add Request" button above to make a request!</p>
-              </div>  
+            ? <p className="no-requests">You haven't made any requests yet. Click the "Add Request" button above to make a request!</p>
             : <RequestsMadeContainer
                 requestsmade={user.requestsmade}
               />  

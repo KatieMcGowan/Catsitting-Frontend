@@ -112,6 +112,17 @@ const RequestShowComponent = (props) => {
     });
   };
 
+  //CANCEL CATSITTING MODAL
+  const [cancelModal, setModal] = useState(false)
+
+  const toggleCancelModal = () => {
+    if (cancelModal === false) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }  
+  };
+
   let creatorCatsitterSame = (props.userId === request.creatorId)
   
   return (
@@ -146,10 +157,25 @@ const RequestShowComponent = (props) => {
                     cat={cat}
                   />
         })} 
-        {creatorCatsitterSame 
+        {/* {creatorCatsitterSame 
         ? <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
         : <p className="p-accept-request" onClick={() => cancelCatsitting()}>Cancel Catsitting</p>
+        } */}
+        {creatorCatsitterSame &&
+          <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
         }
+        {!creatorCatsitterSame  && cancelModal === false &&
+          <p className="p-accept-request" onClick={() => toggleCancelModal()}>Cancel Catsitting</p>
+        }
+        {!creatorCatsitterSame && cancelModal === true &&
+            <div>
+            <p className="delete-confirm">Are you sure you want to cancel this catsitting?</p>
+            <div className="delete-yes-no">
+              <p className="cancel-catsitting" onClick={() => cancelCatsitting()}>Yes</p>
+              <p className="cancel-catsitting" onClick={() => toggleCancelModal()}>No</p>
+            </div>
+          </div>
+        } 
       </div>
     </div>
   );

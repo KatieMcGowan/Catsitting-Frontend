@@ -1,9 +1,13 @@
 .request-show-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 15px;
+  margin: 30px 50px;
 }
 
+.request-show-header {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
 .p-cancel-edit-request{
   font-size: 12px;
   margin: 10px 0;
@@ -69,8 +73,26 @@
   font-size: 12px;
 }
 
+.cancel-catsitting {
+  padding: 10px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.cancel-catsitting:hover {
+  cursor: pointer;
+  transform: scale(1.15)
+}
+
 @media (min-width: 600px) {
+  .request-show-header {
+    font-size: 32px;
+  }
   .p-cancel-edit-request {
+    font-size: 16px;
+  }
+
+  .cancel-catsitting {
     font-size: 16px;
   }
 

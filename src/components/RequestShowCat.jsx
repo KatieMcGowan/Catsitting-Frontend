@@ -31,7 +31,7 @@ const RequestShowCat = (props) => {
 
   return (
     <div className="request-cat-info"> 
-        <div>
+      <div className="cats-left-wrapper">
         <p className="p-cat-header">{cat.catname}</p>
         <div className="cats-left">
           <p className="p-pills">Age: {cat.age}</p>
@@ -39,7 +39,8 @@ const RequestShowCat = (props) => {
           <p className="p-pills">Personality: {cat.personality}</p>
         </div>
       </div>
-      <div>  
+      <div className="cats-middle"></div>
+      <div className="cats-right-wrapper">  
         <p className="p-cat-header">Care Instructions</p>
         <div className="cats-right">
           <div className="p-care-instructions">

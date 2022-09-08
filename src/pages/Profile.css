@@ -68,18 +68,17 @@
 .cats-left {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-content: center;
 }
 
 .cats-right-wrapper {
   flex-grow: 1;
+  max-width: 320px;
 }
 
 .cats-right {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-content: center;
 }
 
