@@ -67,16 +67,16 @@ const RequestMade = (props) => {
     return(
     <div className="requests-made-wrapper" onClick={() => handleRequestClick()}>
       <div className="requests-made-left">
-        <p className="p-pills">{requestMade.start}</p>
-        <p className="p-pills">{requestMade.end}</p>
+        <p className="dashboard-p-pills">{requestMade.start}</p>
+        <p className="dashboard-p-pills">{requestMade.end}</p>
       </div>
         {requestMade.accepted === false
           ? <div className="requests-made-right">
-              <p className="p-pills">Pending</p>
+              <p className="dashboard-p-pills">Pending</p>
             </div>  
           : <div className="requests-made-right">
-              <p className="p-pills">Accepted by {requestMade.catsitterdisplayname}</p>
-              <p className="p-pills">Apartment #{requestMade.apartment}</p>
+              <p className="dashboard-p-pills">Accepted by {requestMade.catsitterdisplayname}</p>
+              <p className="dashboard-p-pills">Apartment #{requestMade.apartment}</p>
             </div>   
         }
     </div>

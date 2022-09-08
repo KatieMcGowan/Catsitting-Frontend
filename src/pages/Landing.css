@@ -30,15 +30,20 @@ h1 {
   width: 70%;
 }
 
+.bubble-text {
+  font-size: 22px;
+}
+
 .landing-features {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  gap: 50px;
+  gap: 20px;
   width: 70%;
+  margin: 20px 0 0 0;
 }
 
-@media (min-width: 850px) {
+@media (min-width: 800px) {
   h1 {
     font-size: 32px;
   }
@@ -51,8 +56,13 @@ h1 {
     width: 750px;
   }
 
+  .bubble-text {
+    font-size: 42px;
+  }
+
   .landing-features {
     width: 750px;
+    gap: 50px;
   }
 
 }

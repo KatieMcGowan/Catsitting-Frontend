@@ -47,7 +47,7 @@ const LogIn = (props) => {
   return(
     <div className="login-wrapper">
       <div className="login-header">
-        <h1>Log In</h1>
+        <h1 className="p-login-header">Log In</h1>
         <p className="p-login">Log in to your account to view your neighbor's catsitting requests and request catsitting from your neighbors.</p>
       </div>
       <div className="login-form">
@@ -77,11 +77,12 @@ const LogIn = (props) => {
             />
           </div>
           <div className="login-form-input">
-            <input type="submit" className="submit" value="Log In"/>
+            <input type="submit" className="submit" value="Submit"/>
           </div>
         </form>
         <p className={error ? "error" : "no-error"}>Invalid username or password, please try again.</p>
-        <p>Don't have an account with us? Click <Link className="p-signup-link" to={"/signup"}>here</Link> to sign up!</p>
+        <p className="p-account">Don't have an account with us?</p> 
+        <p className="p-account">Click <Link className="p-signup-link" to={"/signup"}>here</Link> to sign up!</p>
       </div>
     </div>
   );

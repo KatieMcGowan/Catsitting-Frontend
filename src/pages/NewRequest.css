@@ -5,8 +5,14 @@
 .new-request-header {
   margin: 15px 0px;
 }
+
 .p-new-request {
   font-size: 12px;
+}
+
+.p-new-request-header {
+  font-size: 18px;
+  margin: 0 0 10px 0;
 }
 
 .new-request-form {
@@ -34,7 +40,38 @@
   font-size: 12px;
   margin: 10px 0 0 0;
   text-align: center;
+  padding: 5px;
+  /* border: solid 3px rgb(235, 58, 58);
+  border-radius: 5px;
+  background-color: rgb(239, 130, 130); */
   color: rgb(239, 130, 130);
+}
+
+.delete-confirm {
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  text-align: center;
+  padding: 5px;
+}
+
+.delete-yes-no {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.confirm {
+  padding: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  color: rgb(49, 152, 230);
+}
+
+.confirm:hover {
+  cursor: pointer;
+  transform: scale(1.15)
 }
 
 .submit:hover {
@@ -51,6 +88,10 @@
     font-size: 16px;
   }
 
+  .p-new-request-header {
+    font-size: 32px;
+  }
+
   .new-request-form {
     display: flex;
     flex-direction: row;
@@ -59,6 +100,14 @@
   }
 
   .delete-request {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .delete-confirm {
+    font-size: 16px;
+  }
+
+  .confirm {
+    font-size: 16px;
   }
 }

@@ -57,12 +57,12 @@ const RequestAccepted = (props) => {
   return(
     <div className="requests-accepted-wrapper" onClick={() => handleRequestClick()}>
       <div className="requests-accepted-left">
-        <p className="p-pills">{requestAccepted.start}</p>
-        <p className="p-pills">{requestAccepted.end}</p>
+        <p className="dashboard-p-pills">{requestAccepted.start}</p>
+        <p className="dashboard-p-pills">{requestAccepted.end}</p>
       </div>
       <div className="requests-accepted-right">
-        <p className="p-pills">Posted by {requestAccepted.creatordisplayname}</p>
-        <p className="p-pills">Apartment #{requestAccepted.apartment}</p>
+        <p className="dashboard-p-pills">Posted by {requestAccepted.creatordisplayname}</p>
+        <p className="dashboard-p-pills">Apartment #{requestAccepted.apartment}</p>
       </div>
     </div>  
   )

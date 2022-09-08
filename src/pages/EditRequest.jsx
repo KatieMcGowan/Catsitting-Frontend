@@ -53,6 +53,7 @@ const EditRequest = (props) => {
     })
   };
 
+  //DELETE FUNCTIONALITY
   const handleDeleteRequest = () => {
     RequestQuery.delete(requestId)
     .then(data => {
@@ -60,10 +61,20 @@ const EditRequest = (props) => {
     });
   };
 
+  const [deleteModal, setModal] = useState(false)
+
+  const toggleDeleteModal = () => {
+    if (deleteModal === false) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }  
+  };
+
   return(
     <div className="new-request-wrapper">
       <div className="new-request-header">
-        <h1>Edit Request</h1>
+        <h1 className="p-new-request-header">Edit Request</h1>
         <p className="p-new-request">Make sure your cat's info is up to date on your profile, and communicate any changes with your catsitter if your request has been accepted.</p>
       </div>
       <form onSubmit={handleSubmit}>
@@ -92,11 +103,20 @@ const EditRequest = (props) => {
             />
           </div> 
           <div className="new-request-form-input">
-            <input type="submit" className="submit" value="Update Request"/>
+            <input type="submit" className="submit" value="Submit"/>
           </div>
         </div>  
+        {deleteModal === false
+        ? <p className="delete-request" onClick={() => toggleDeleteModal()}>Delete Request</p>
+        : <div>
+            <p className="delete-confirm">Are you sure you want to delete this request?</p>
+            <div className="delete-yes-no">
+              <p className="confirm" onClick={() => handleDeleteRequest()}>Yes</p>
+              <p className="confirm" onClick={() => toggleDeleteModal()}>No</p>
+            </div>
+          </div>
+        }
       </form>
-      <p className="delete-request" onClick={() => handleDeleteRequest()}>Delete Request</p>
     </div>
   );
 };

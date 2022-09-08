@@ -2,14 +2,14 @@
   margin: 15px;
 }
 
-.p-login {
-  font-size: 12px;
+.p-login-header {
+  font-size: 18px;
+  margin: 0 0 10px 0;
 }
 
-@media (min-width: 600px) {
-  .p-login {
-    font-size: 16px;
-  }
+.p-login {
+  font-size: 12px;
+  /* margin: 0 0 0 20px;  */
 }
 
 .login-form {
@@ -37,6 +37,8 @@
 }
 
 .p-signup-link {
+  font-size: 12px;
+  align-self: center;
   text-decoration: none;
   color: rgb(49, 152, 230)
 }
@@ -55,13 +57,27 @@ label {
   }
 }
 
-.p-signup-link {
+.p-account {
   font-size: 12px;
   align-self: center;
 }
 
 @media (min-width: 600px) {
+  .p-login-header {
+    font-size: 32px;
+  }
+  .p-login {
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 16px;
+  }
   .p-signup-link {
+    font-size: 16px;
+  }
+
+  .p-account {
     font-size: 16px;
   }
 }

@@ -53,7 +53,7 @@ const NewRequest = (props) => {
   return(
     <div className="new-request-wrapper">
       <div className="new-request-header">
-        <h1>New Request</h1>
+        <h1 className="p-new-request-header">New Request</h1>
         <p className="p-new-request">Just tell us the start date and end date, and we'll populate your cat's information for you on the request!</p>
       </div>
       {user.cats.length === 0 
@@ -82,7 +82,7 @@ const NewRequest = (props) => {
                 />
               </div> 
               <div className="new-request-form-input">
-                <input type="submit" className="submit" value="Request"/>
+                <input type="submit" className="submit" value="Submit"/>
               </div>
             </div>  
           </form>

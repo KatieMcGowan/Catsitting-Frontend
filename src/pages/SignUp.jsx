@@ -60,7 +60,7 @@ const SignUp = () => {
   return(
     <div className="signup-wrapper">
       <div className="signup-header">
-        <h1>Sign Up</h1>
+        <h1 className="p-signup-header">Sign Up</h1>
         <p className="p-signup">Create an account with us to view your neighbor's catsitting requests and request catsitting from your neighbors. Upon account creation, you will be redirected to the login page.</p>
       </div>
       <div className="signup-form">
@@ -114,12 +114,13 @@ const SignUp = () => {
             />
           </div>
           <div className="signup-form-input">
-            <input type="submit" className="submit" value="Create User"/>
+            <input type="submit" className="submit" value="Submit"/>
           </div>
         </form>
         <p className={userNameError ? "error" : "no-error"}>Username has already been taken, please choose a different one.</p>
         <p className={apartmentError ? "error" : "no-error"}>Apartment Number has already been claimed, please choose a different one.</p>
-        <p>Already have an account with us? Click <Link className="p-login-link" to={"/login"}>here</Link> to log in!</p>
+        <p className="p-account">Already have an account with us?</p>
+        <p className="p-account">Click <Link className="p-login-link" to={"/login"}>here</Link> to log in!</p>
       </div>
     </div>
   );
