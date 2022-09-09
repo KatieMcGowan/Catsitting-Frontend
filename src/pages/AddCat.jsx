@@ -36,28 +36,53 @@ const AddCat = (props) => {
       [event.target.name]: event.target.value,
     });
   };
+  
+  //FUNCTIONS THAT PROHIBIT USER FROM CREATING EMPTY FIELDS
+  const medicationEmptyCheck = () => {
+    let splicedMedicationsArray = []
+    for (let i = 0; i < medications.length; i++) {
+      if (medications[i].medication !== "") {
+        splicedMedicationsArray.push(medications[i])
+      };
+    };
+    return splicedMedicationsArray
+  }
+
+  const notesEmptyCheck = () => {
+    let splicedNotesArray = []
+    for (let i = 0; i < additionalNotes.length; i++) {
+      if (additionalNotes[i].additionalnote !== "") {
+        splicedNotesArray.push(additionalNotes[i])
+      };
+    };
+    return splicedNotesArray
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     let newState = state;
-    if (medications.length === 0) {
+    medicationEmptyCheck();
+    if (medicationEmptyCheck().length === 0) {
       newState.medication = {medication: "N/A"}
     } else {
-      newState.medication = medications;
+      newState.medication = medicationEmptyCheck();
     }
-    if (additionalNotes.length === 0) {
+    notesEmptyCheck();
+    if (notesEmptyCheck().length === 0) {
       newState.additionalnotes = {additionalnote: "N/A"}
     } else {
-      newState.additionalnotes = additionalNotes
+      newState.additionalnotes = notesEmptyCheck();
     }
     if (state.personality === "") {
       newState.personality = "Friendly"
     }
+    console.log(newState)
     CatQuery.create(newState)
     .then(data => {
       navigate("/dashboard/profile")
     })
   };
+
 
   //MEDICATION AND ADDITIONAL NOTES FUNCTIONS
   const handleMedicationFormChange = (index, event) => {
