@@ -131,11 +131,10 @@ const EditCat = (props) => {
     if (updatedCat.personality === "") {
       newState.personality = "Friendly"
     }
-    console.log(newState)
-    // CatQuery.create(newState)
-    // .then(data => {
-    //   navigate("/dashboard/profile")
-    // })
+    CatQuery.update(catId, newState)
+    .then(data => {
+      navigate("/dashboard/profile")
+    })
   };
 
     //DELETE FUNCTIONALITY
