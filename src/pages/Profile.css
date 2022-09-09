@@ -147,6 +147,8 @@
     flex-direction: row wrap;
     justify-content: space-between;
     width: 75%; 
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
   }
 
   .p-cat-header {
