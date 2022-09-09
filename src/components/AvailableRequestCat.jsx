@@ -39,6 +39,7 @@ const AvailableRequestCat = (props) => {
           <p className="p-pills">Personality: {cat.personality}</p>
         </div>
       </div>
+      <div className="cats-middle"></div>
       <div className="cats-right-wrapper">  
         <p className="p-cat-header">Care Instructions</p>
         <div className="cats-right">
