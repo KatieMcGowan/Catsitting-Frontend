@@ -56,5 +56,5 @@ export default App;
 //> Update schema to allow only two cats
 //> Have error messages appear on cat creation page stating that only two cats are allowed
 //> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
-//> Add delete modals
 //> Messaging system
+//> Come up with name: "Kneading Neighbors" "Pounce" "Knead" "You scratch my cat I'll scratch yours"
