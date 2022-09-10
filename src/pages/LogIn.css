@@ -3,12 +3,12 @@
 }
 
 .p-login-header {
-  font-size: 18px;
+  font-size: 22px;
   margin: 0 0 10px 0;
 }
 
 .p-login {
-  font-size: 12px;
+  font-size: 16px;
   /* margin: 0 0 0 20px;  */
 }
 
@@ -67,7 +67,7 @@ label {
     font-size: 32px;
   }
   .p-login {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   label {

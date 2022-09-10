@@ -107,9 +107,9 @@ const EditRequest = (props) => {
           </div>
         </div>  
         {deleteModal === false
-        ? <p className="delete-request" onClick={() => toggleDeleteModal()}>Delete Request</p>
+        ? <p className="delete-request" onClick={() => toggleDeleteModal()}>Cancel Request</p>
         : <div>
-            <p className="delete-confirm">Are you sure you want to delete this request?</p>
+            <p className="delete-confirm">Are you sure you want to cancel this request?</p>
             <div className="delete-yes-no">
               <p className="confirm" onClick={() => handleDeleteRequest()}>Yes</p>
               <p className="confirm" onClick={() => toggleDeleteModal()}>No</p>

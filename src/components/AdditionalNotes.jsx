@@ -1,7 +1,7 @@
 const AdditionalNotes = (props) => {
   return(
     <ul>
-      <li className="p-pills">{props.additionalnote.additionalnote}</li>
+      <li className="p-pills">- {props.additionalnote.additionalnote}</li>
     </ul>
   )
 }

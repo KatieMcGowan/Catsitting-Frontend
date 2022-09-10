@@ -120,8 +120,9 @@ const AddCat = (props) => {
   };
 
   return(
-    <div>
+    <div className="add-cat-page-wrapper">
       <h1 className="add-cat-header">Add a Cat to Your Profile</h1>
+      <p className="p-add-cat">Once a cat is added to your profile, it's information will automatically be displayed with any catsitting request you make.</p>
       <form onSubmit={handleSubmit}>
         <div className="add-cat-wrapper">
           <div className="about-your-cat">

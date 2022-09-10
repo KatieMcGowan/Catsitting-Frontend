@@ -3,11 +3,11 @@
 }
 
 .p-signup {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .p-signup-header {
-  font-size: 18px;
+  font-size: 22px;
   margin: 0 0 10px 0;
 }
 
@@ -39,7 +39,7 @@
   }
 
   .p-signup {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .p-login-link {

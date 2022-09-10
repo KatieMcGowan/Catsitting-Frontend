@@ -36,7 +36,7 @@ const Profile = (props) => {
 
   return(
     <div className="profile-wrapper">
-      <h1>{profile.displayname} @{profile.username}</h1>
+      <h1 className="profile-header">{profile.displayname} @{profile.username}</h1>
       <p className="p-profile-apartment-number">Apartment #{profile.apartment}</p>
       <CatsContainer
         cats={profile.cats}

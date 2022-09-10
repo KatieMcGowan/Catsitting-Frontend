@@ -156,8 +156,9 @@ const EditCat = (props) => {
   };
 
   return(
-    <div>
+    <div className="add-cat-page-wrapper">
       <h1 className="add-cat-header">Edit Your Cat's Information</h1>
+      <p className="p-add-cat">If your cat is included in any accepted catsitting requests, be sure to communicate any care changes to your catsitter.</p>
       <form onSubmit={handleSubmit}>
         <div className="add-cat-wrapper">
           <div className="about-your-cat">
@@ -286,7 +287,6 @@ const EditCat = (props) => {
         <div className="new-cat-form-input"> 
           <input type="submit" className="submit" value="Submit"/>
         </div>
-      </form>
       {deleteModal === false
         ? <p className="delete-request" onClick={() => toggleDeleteModal()}>Remove Cat Info</p>
         : <div>
@@ -297,6 +297,7 @@ const EditCat = (props) => {
             </div>
           </div>
         }  
+      </form>
     </div>
   )
 }

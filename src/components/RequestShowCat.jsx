@@ -30,25 +30,22 @@ const RequestShowCat = (props) => {
   }, []);
 
   return (
-    <div className="request-cat-info"> 
-      <div className="cats-left-wrapper">
-        <p className="p-cat-header">{cat.catname}</p>
-        <div className="cats-left">
-          <p className="p-pills">Age: {cat.age}</p>
-          <p className="p-pills">Breed: {cat.breed}</p>
-          <p className="p-pills">Personality: {cat.personality}</p>
-        </div>
+    <div className="request-cat-wrapper"> 
+      <p className="p-request-cat-header">{cat.catname}</p>
+      <div className="request-demographics">
+        <span>Age: {cat.age}</span>
+        <span>Breed: {cat.breed}</span>
+        <span>Personality: {cat.personality}</span>
       </div>
-      <div className="cats-middle"></div>
-      <div className="cats-right-wrapper">  
+      <div className="request-cat-info">
+        <div className="test-div">
         <p className="p-cat-header">Care Instructions</p>
-        <div className="cats-right">
           <div className="p-care-instructions">
-            <p className="p-care-header">Feeding</p>
-            <p className="p-pills">{cat.feeding}</p>
+            <p className="p-care-header">Feeding:</p>
+            <p className="p-pills">- {cat.feeding}</p>
           </div>
           <div className="p-care-instructions">
-            <p className="p-care-header">Medication</p>
+            <p className="p-care-header">Medication:</p>
             {cat.medication.map((medication, index) => {
                 return  <Medications
                           key={index}
@@ -67,7 +64,7 @@ const RequestShowCat = (props) => {
           </div>  
         </div>
       </div>  
-    </div>
+    </div>          
   )
 };
 

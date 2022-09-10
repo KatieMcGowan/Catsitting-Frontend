@@ -46,7 +46,7 @@ const AvailableRequest = (props) => {
   };
 
   return (
-    <div className="your-cat-pill">
+    <div className="request-show-pill">
       <div className="individual-request-wrapper">
         <div className="available-request-time-requester">
           <div className="requests-made-left">

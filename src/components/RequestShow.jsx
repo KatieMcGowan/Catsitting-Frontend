@@ -126,7 +126,7 @@ const RequestShowComponent = (props) => {
   let creatorCatsitterSame = (props.userId === request.creatorId)
   
   return (
-    <div className="your-cat-pill">
+    <div className="request-show-pill">
       <div className="individual-request-wrapper">
         <div className="available-request-time-requester">
         <div className="requests-made-left">
@@ -157,10 +157,6 @@ const RequestShowComponent = (props) => {
                     cat={cat}
                   />
         })} 
-        {/* {creatorCatsitterSame 
-        ? <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
-        : <p className="p-accept-request" onClick={() => cancelCatsitting()}>Cancel Catsitting</p>
-        } */}
         {creatorCatsitterSame &&
           <p className="p-accept-request" onClick={() => redirectToEdit()}>Edit Request</p>
         }

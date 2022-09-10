@@ -1,6 +1,15 @@
-.add-cat-header {
-  font-size: 18px;
+.add-cat-page-wrapper {
   margin: 30px 50px;
+}
+
+.add-cat-header {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+}
+
+.p-add-cat {
+  font-size: 16px;
+  margin: 0 0 20px 0;
 }
 
 form {
@@ -34,6 +43,14 @@ form {
 
 label {
   font-size: 12px;
+}
+
+select {
+  height: 29px;
+}
+
+.option {
+  background-color: white;
 }
 
 .care-instructions-header {
@@ -78,6 +95,10 @@ label {
 @media (min-width: 850px) {
   .add-cat-header {
     font-size: 32px;
+  }
+
+  .p-add-cat {
+    font-size: 20px;
   }
 
   label {
