@@ -4,13 +4,14 @@ const Landing = () => {
   return(
     <div className="landing-wrapper">
       <div className="landing-bubble">
-        <h1 className="bubble-text">You scratch my cat,</h1>
-        <h1 className="bubble-text">I'll scratch yours</h1>
+        <h1 className="bubble-text">Furee</h1>
+        <h1 className="bubble-text-2">Your neighborhood</h1>
+        <h1 className="bubble-text-2">catsitting app</h1>
       </div>
       <div className="landing-features">
         <div className="landing-request-catsitter">
           <h1>Request a Catsitter</h1>
-          <p className="p-landing">Populate your profile with your cats and request catsitting sessions from your neighbors for those times you're out of town.</p>
+          <p className="p-landing">Populate your profile with your cats and request catsitting sessions from your neighbors, for those times you're out of town.</p>
         </div>
         <div className="landing-book-catsitting">
           <h1>Book a Catsitting</h1>
