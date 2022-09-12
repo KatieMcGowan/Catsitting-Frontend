@@ -45,7 +45,7 @@
 
 .your-cat-pill {
   background-color: paleturquoise;
-  border: solid 3px skyblue;
+  border: double 5px skyblue;
   border-radius: 30px;
   display: flex;
   flex-flow: column;

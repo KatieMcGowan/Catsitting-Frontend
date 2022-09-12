@@ -6,13 +6,16 @@ import "./LogIn.css"
 const LogIn = (props) => {
   let navigate = useNavigate();
 
+  //INPUT STATE FOR USER CREDENTIALS
   const [state, setState] = useState({
     username: "",
     password: ""
   })
 
+  //USERS STATE FOR VALIDATION
   const [users, setUsers] = useState({})
 
+  //STATE FOR DISPLAYING ERRORS
   const [error, setError] = useState(false)
 
   useEffect(() => {

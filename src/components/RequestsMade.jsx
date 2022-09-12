@@ -1,18 +1,9 @@
-import { Link } from "react-router-dom";
 import RequestMade from "./RequestMade";
 
 const RequestsMade = (props) => {
-  //SORT BY NEWEST REQUESTS MADE
-
-  const sortedRequestsMade = [];
-
-  for (let i = props.requestsmade.length - 1; i >= 0; i-- ) {
-    sortedRequestsMade.push(props.requestsmade[i])
-  };
-  
   return(
     <div className="pill-wrapper">
-      {sortedRequestsMade.map((requestmade, index) => {
+      {props.requestsmade.map((requestmade, index) => {
         return  <RequestMade
                   key={index}
                   request={requestmade}

@@ -14,7 +14,7 @@ import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
 
 const App = () => {
-  //AUTH STATES
+  //AUTH STATE
   const [auth, setAuth] = useState({
     loggedIn: false,
     userId: ""
@@ -57,4 +57,4 @@ export default App;
 //> Have error messages appear on cat creation page stating that only two cats are allowed
 //> Do not allow users to delete a cat if a request is contigent on it. Prompt them to delete request then remove cat.
 //> Messaging system
-//> Come up with name: "Kneading Neighbors" "Pounce" "Knead" "You scratch my cat I'll scratch yours"
+//> Sorting requests by most upcoming. 
