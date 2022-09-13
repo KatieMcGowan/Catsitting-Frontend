@@ -1,4 +1,4 @@
-const url = `http://localhost:5000/cats`
+const url = `https://serene-anchorage-09864.herokuapp.com/cats`
 
 class CatQuery {
   static all = () => {

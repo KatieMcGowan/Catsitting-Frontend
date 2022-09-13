@@ -1,4 +1,4 @@
-const url = `http://localhost:5000/messages`
+const url = `https://serene-anchorage-09864.herokuapp.com/messages`
 
 class MessageQuery {
   static all = () => {

@@ -1,4 +1,4 @@
-const url = `http://localhost:5000/requests`
+const url = `https://serene-anchorage-09864.herokuapp.com/requests`
 
 class RequestQuery {
   static all = () => {
