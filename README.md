@@ -17,6 +17,16 @@ HiTail is a MERN-stack application. It specifically utilizes:
 
 The backend for this application can be found [here](https://github.com/KatieMcGowan/Catsitting-Backend)
 
+## ERD & Wireframes
+
+![ERD](./readmefiles/HiTail%20ERD%20%26%20Wireframes-ERD.jpg)
+
+![Dashboard](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Dashboard.jpg)
+
+![Profile](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Profile%20Show.jpg)
+
+![AvailableRequests](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Available%20Requests.jpg) 
+
 ## Future Features
 
 - [ ] Create a messaging system on the request details page allowing users to discuss the request in-app
