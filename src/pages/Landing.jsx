@@ -4,7 +4,7 @@ const Landing = () => {
   return(
     <div className="landing-wrapper">
       <div className="landing-bubble">
-        <h1 className="bubble-text">Furee</h1>
+        <h1 className="bubble-text">HiTail</h1>
         <h1 className="bubble-text-2">Your neighborhood</h1>
         <h1 className="bubble-text-2">catsitting app</h1>
       </div>
