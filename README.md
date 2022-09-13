@@ -19,11 +19,19 @@ The backend for this application can be found [here](https://github.com/KatieMcG
 
 ## ERD & Wireframes
 
+### ERD
+
 ![ERD](./readmefiles/HiTail%20ERD%20%26%20Wireframes-ERD.jpg)
+
+### Dashboard Page
 
 ![Dashboard](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Dashboard.jpg)
 
+### Profile Page
+
 ![Profile](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Profile%20Show.jpg)
+
+### Available Requests Page
 
 ![AvailableRequests](./readmefiles/HiTail%20ERD%20%26%20Wireframes-Available%20Requests.jpg) 
 
