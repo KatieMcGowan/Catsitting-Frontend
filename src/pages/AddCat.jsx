@@ -76,7 +76,6 @@ const AddCat = (props) => {
     if (state.personality === "") {
       newState.personality = "Friendly"
     }
-    console.log(newState)
     CatQuery.create(newState)
     .then(data => {
       navigate("/dashboard/profile")
