@@ -118,6 +118,7 @@
   border: solid 3px skyblue;
   border-radius: 5px;
   font-size: 12px;
+  color: black;
 }
 
 .submit:hover {
