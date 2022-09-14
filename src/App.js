@@ -12,7 +12,6 @@ import Profile from "./pages/Profile";
 import RequestShow from "./pages/RequestShow";
 import SignUp from "./pages/SignUp";
 import EditRequest from "./pages/EditRequest";
-import "./App.css";
 
 const App = () => {
   //AUTH STATE
@@ -30,7 +29,7 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div>
       <Header auth={auth} authSet={authSet}/>
       <Routes>
         <Route exact path={"/"} element={<Landing />} />
