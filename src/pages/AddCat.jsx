@@ -141,7 +141,7 @@ const AddCat = (props) => {
             <div className="new-cat-form-input">
               <label htmlFor="age">Age</label>
               <input
-                type="text"
+                type="number"
                 name="age"
                 minLength="1"
                 maxLength="2"
