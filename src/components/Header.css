@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .nav {
   display: flex;
   flex-flow: row wrap;
@@ -55,12 +61,4 @@
     height: 50px;
     width: 50px;
   }
-  
-
-  .left{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
 }
