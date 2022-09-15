@@ -1,5 +1,8 @@
 import AvailableRequest from "./AvailableRequest";
 
+
+//12:00AM returns 0:00AM
+
 const AvailableRequests = (props) => {
   //DATE CONVERSION FUNCTION TO MAKE ISO STRING LEGIBLE
   const dateConversion = (datestring) => {
@@ -16,6 +19,9 @@ const AvailableRequests = (props) => {
     if (hours === 12) {
       hours = hours.toString()
       ampm = "PM"
+    } else if (hours === 0) {
+      hours = hours + 12
+      ampm = "AM"
     } else if (hours > 12) {
       hours = hours - 12;
       ampm = "PM"

@@ -25,6 +25,9 @@ const RequestAccepted = (props) => {
     if (hours === 12) {
       hours = hours.toString()
       ampm = "PM"
+    } else if (hours === 0) {
+      hours = hours + 12
+      ampm = "AM"
     } else if (hours > 12) {
       hours = hours - 12;
       ampm = "PM"
