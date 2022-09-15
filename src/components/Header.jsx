@@ -1,6 +1,6 @@
 import Nav from "./Nav"
 import "./Header.css"
-import logo from "../../public/assets/hitail_logo.png"
+import logo from "../components/hitail_logo.png"
 
 
 const Header = (props) => {
