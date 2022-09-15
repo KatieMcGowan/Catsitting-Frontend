@@ -1,6 +1,6 @@
 import Nav from "./Nav"
 import "./Header.css"
-import logo from "../components/Logo2.png"
+import logo from "../components/TestLogo.png"
 
 
 const Header = (props) => {
