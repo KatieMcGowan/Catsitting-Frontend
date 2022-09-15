@@ -13,7 +13,6 @@
   background-color: rgb(7, 156, 215);
   border-bottom: double 10px white;
   text-align: center;
-  padding: 15px;
   align-items: center;
 }
 
@@ -34,6 +33,10 @@
 .nav-text {
   color: white;
   font-size: 14px;
+}
+
+.nav-text-right {
+  padding: 20px;
 }
 
 .logo-image {
@@ -58,7 +61,7 @@
   }
 
   .logo-image {
-    height: 50px;
-    width: 74px;
+    height: 60px;
+    width: 84px;
   }
 }

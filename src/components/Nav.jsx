@@ -19,8 +19,8 @@ const Nav = (props) => {
       : <Link className="nav-link" to={"/dashboard/profile"}><h2 className="nav-text">Profile</h2></Link>
       }
       {props.loggedIn === false
-      ? <Link className="nav-link" to={"/signup"}><h2 className="nav-text">Sign Up</h2></Link>
-      : <h2 className="nav-link nav-text" onClick={() => handleLogOut()}>Log Out</h2>
+      ? <Link className="nav-link" to={"/signup"}><h2 className="nav-text-right">Sign Up</h2></Link>
+      : <h2 className="nav-link nav-text-right" onClick={() => handleLogOut()}>Log Out</h2>
       }
     </div>
   )
