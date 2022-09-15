@@ -30,6 +30,11 @@
   font-size: 14px;
 }
 
+.logo-image {
+  height: 14px;
+  width: 10px;
+}
+
 .nav-link {
   cursor: pointer;
   color: white;
@@ -45,6 +50,12 @@
   .nav-text {
     font-size: 22px;
   }
+
+  .logo-image {
+    height: 21px;
+    width: 15px;
+  }
+  
 
   .left{
     display: flex;

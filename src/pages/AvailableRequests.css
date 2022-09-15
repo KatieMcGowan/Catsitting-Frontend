@@ -30,6 +30,10 @@
   margin: 0 0 10px 0;
 }
 
+.request-p-pills {
+  font-size: 12px;
+}
+
 .p-view-own-request {
   font-size: 12px;
   text-decoration: none;
@@ -60,6 +64,10 @@ li {
   .individual-request-wrapper {
     max-width: 1200px;
   }  
+
+  .request-p-pills {
+    font-size: 16px;
+  }
   
   .p-accept-request {
     font-size: 16px; 

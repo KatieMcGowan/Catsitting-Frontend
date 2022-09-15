@@ -55,11 +55,11 @@ const AvailableRequest = (props) => {
           </div>
           {props.user !== requester.creatorId 
             ? <div className="requests-made-right">
-                <p className="p-pills">Posted by: {requester.creator}</p>
-                <p className="p-pills">Apartment #{requester.apartment}</p>
+                <p className="request-p-pills">Posted by: {requester.creator}</p>
+                <p className="request-p-pills">Apartment #{requester.apartment}</p>
               </div>
-            : <div className="requests-made-right">  
-                <p className="p-pills">Posted by: Me</p>
+            : <div className="request-made-right">  
+                <p className="request-p-pills">Posted by: Me</p>
               </div>  
           }
         </div>  

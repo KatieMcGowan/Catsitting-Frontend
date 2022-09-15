@@ -135,19 +135,19 @@ const RequestShowComponent = (props) => {
         </div>
         {request.accepted === false &&
           <div className="requests-made-right">
-            <p className="p-pills">Pending</p>
+            <p className="request-p-pills">Pending</p>
           </div>
         }
         {request.accepted === true && creatorCatsitterSame === true &&
           <div className="requests-made-right">
-            <p className="p-pills">Accepted by: {request.catsitterdisplayname}</p>
-            <p className="p-pills">Apartment #{request.catsitterapartment}</p>
+            <p className="request-p-pills">Accepted by: {request.catsitterdisplayname}</p>
+            <p className="request-p-pills">Apartment #{request.catsitterapartment}</p>
           </div>  
         }
         {request.accepted === true && creatorCatsitterSame === false &&
           <div className="requests-made-right">
-            <p className="p-pills">Posted by: {request.creatordisplayname}</p>
-            <p className="p-pills">Apartment #{request.creatorapartment}</p>
+            <p className="request-p-pills">Posted by: {request.creatordisplayname}</p>
+            <p className="request-p-pills">Apartment #{request.creatorapartment}</p>
           </div>
         } 
       </div>
