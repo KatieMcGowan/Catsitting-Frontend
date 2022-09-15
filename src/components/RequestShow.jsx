@@ -26,7 +26,9 @@ const RequestShowComponent = (props) => {
   });
 
   const dateConversion = (datestring) => {
+    console.log(datestring);
     let dateDate = new Date (datestring)
+    console.log(dateDate);
     let ampm = "AM"
     let month = (dateDate.getMonth() + 1).toString();
     let date = dateDate.getDate().toString();
@@ -97,6 +99,7 @@ const RequestShowComponent = (props) => {
         })
       }  
     })
+    console.log(request.start);
   },[props]);
 
 
