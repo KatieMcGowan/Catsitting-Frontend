@@ -42,7 +42,7 @@ const RequestShowCat = (props) => {
         <p className="p-cat-header">Care Instructions</p>
           <div className="p-care-instructions">
             <p className="p-care-header">Feeding:</p>
-            <p className="p-pills">- {cat.feeding}</p>
+            <p className="p-pills">{cat.feeding}</p>
           </div>
           <div className="p-care-instructions">
             <p className="p-care-header">Medication:</p>

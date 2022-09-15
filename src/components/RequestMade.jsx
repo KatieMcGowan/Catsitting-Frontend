@@ -13,12 +13,13 @@ const RequestMade = (props) => {
   });
 
   const dateConversion = (datestring) => {
-    let dateDate = new Date (datestring)
+    let slicedString = datestring.slice(0, 23)
+    let dateObject = new Date(slicedString);
     let ampm = "AM"
-    let month = (dateDate.getMonth() + 1).toString();
-    let date = dateDate.getDate().toString();
-    let hours = dateDate.getHours();
-    let minutes = dateDate.getMinutes()
+    let month = (dateObject.getMonth() + 1).toString();
+    let date = dateObject.getDate().toString();
+    let hours = dateObject.getHours();
+    let minutes = dateObject.getMinutes()
     if (minutes < 10) {
       minutes = "0" + minutes
     };
