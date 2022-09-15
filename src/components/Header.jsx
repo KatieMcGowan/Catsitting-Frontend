@@ -7,7 +7,7 @@ const Header = (props) => {
   return(
     <div className="header">
       <div className="left">
-        <img src={logo} height="50" width="50" alt="logo"></img>
+        <img src={logo} className="logo-image" alt="logo"></img>
         <h2 className="nav-text">HiTail</h2>
       </div>  
       <Nav 
