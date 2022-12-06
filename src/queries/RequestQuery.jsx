@@ -1,22 +1,22 @@
-import url from "../config";
+const config = require("../config")
 
 class RequestQuery {
   static all = () => {
-    return fetch(`${url}/requests`)
+    return fetch(`${config.url}/requests`)
     .then(response => response.json())
     .then(jsonData => jsonData.requests)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/requests/${id}`)
+    return fetch(`${config.url}/requests/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.request)
     .catch(err => console.log(err))
   };
 
   static create = (requestData) => {
-    return fetch (`${url}/requests`, {
+    return fetch (`${config.url}/requests`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +27,7 @@ class RequestQuery {
   };
   
   static update = (id, requestData) => {
-    return fetch(`${url}/requests/${id}`, {
+    return fetch(`${config.url}/requests/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -38,7 +38,7 @@ class RequestQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${url}/requests/${id}`, {
+    return fetch(`${config.url}/requests/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())

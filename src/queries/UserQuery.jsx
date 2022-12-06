@@ -1,22 +1,22 @@
-import url from "../config";
+const config = require("../config")
 
 class UserQuery {
   static all = () => {
-    return fetch(`${url}/users`)
+    return fetch(`${config.url}/users`)
     .then(response => response.json())
     .then(jsonData => jsonData.users)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/users/${id}`)
+    return fetch(`${config.url}/users/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.user)
     .catch(err => console.log(err))
   };
 
   static create = (userData) => {
-    return fetch (`${url}/users`, {
+    return fetch (`${config.url}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +27,7 @@ class UserQuery {
   };
 
   static update = (id, userData) => {
-    return fetch(`${url}/users/${id}`, {
+    return fetch(`${config.url}/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

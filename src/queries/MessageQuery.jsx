@@ -1,22 +1,22 @@
-import url from "../config";
+const config = require("../config")
 
 class MessageQuery {
   static all = () => {
-    return fetch(`${url}/messages`)
+    return fetch(`${config.url}/messages`)
     .then(response => response.json())
     .then(jsonData => jsonData.messages)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/messages/${id}`)
+    return fetch(`${config.url}/messages/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.message)
     .catch(err => console.log(err))
   };
 
   static create = (messageData) => {
-    return fetch (`${url}/messages`, {
+    return fetch (`${config.url}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

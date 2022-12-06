@@ -1,22 +1,22 @@
-import url from "../config";
+const config = require("../config")
 
 class CatQuery {
   static all = () => {
-    return fetch(`${url}/cats`)
+    return fetch(`${config.url}/cats`)
     .then(response => response.json())
     .then(jsonData => jsonData.cats)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/${id}`)
+    return fetch(`${config.url}/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.cat)
     .catch(err => console.log(err))
   };
 
   static create = (catData) => {
-    return fetch (`${url}/cats`, {
+    return fetch (`${config.url}/cats`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,7 +28,7 @@ class CatQuery {
   };
   
   static update = (id, catData) => {
-    return fetch(`${url}/cats/${id}`, {
+    return fetch(`${config.url}/cats/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -39,7 +39,7 @@ class CatQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${url}/cats/${id}`, {
+    return fetch(`${config.url}/cats/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())
