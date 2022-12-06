@@ -1,22 +1,22 @@
-const config = require("../config")
+const url = `https://peaceful-violetblooms-486731.onrender.com/`
 
 class CatQuery {
   static all = () => {
-    return fetch(`${config.url}/cats`)
+    return fetch(`${url}/cats`)
     .then(response => response.json())
     .then(jsonData => jsonData.cats)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${config.url}/${id}`)
+    return fetch(`${url}/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.cat)
     .catch(err => console.log(err))
   };
 
   static create = (catData) => {
-    return fetch (`${config.url}/cats`, {
+    return fetch (`${url}/cats`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,7 +28,7 @@ class CatQuery {
   };
   
   static update = (id, catData) => {
-    return fetch(`${config.url}/cats/${id}`, {
+    return fetch(`${url}/cats/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -39,7 +39,7 @@ class CatQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${config.url}/cats/${id}`, {
+    return fetch(`${url}/cats/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())

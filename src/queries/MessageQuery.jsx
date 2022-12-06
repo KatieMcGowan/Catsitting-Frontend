@@ -1,22 +1,22 @@
-const config = require("../config")
+const url = `https://peaceful-violetblooms-486731.onrender.com/`
 
 class MessageQuery {
   static all = () => {
-    return fetch(`${config.url}/messages`)
+    return fetch(`${url}/messages`)
     .then(response => response.json())
     .then(jsonData => jsonData.messages)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${config.url}/messages/${id}`)
+    return fetch(`${url}/messages/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.message)
     .catch(err => console.log(err))
   };
 
   static create = (messageData) => {
-    return fetch (`${config.url}/messages`, {
+    return fetch (`${url}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

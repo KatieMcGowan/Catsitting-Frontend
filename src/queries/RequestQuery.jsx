@@ -1,22 +1,22 @@
-const config = require("../config")
+const url = `https://peaceful-violetblooms-486731.onrender.com/`
 
 class RequestQuery {
   static all = () => {
-    return fetch(`${config.url}/requests`)
+    return fetch(`${url}/requests`)
     .then(response => response.json())
     .then(jsonData => jsonData.requests)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${config.url}/requests/${id}`)
+    return fetch(`${url}/requests/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.request)
     .catch(err => console.log(err))
   };
 
   static create = (requestData) => {
-    return fetch (`${config.url}/requests`, {
+    return fetch (`${url}/requests`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +27,7 @@ class RequestQuery {
   };
   
   static update = (id, requestData) => {
-    return fetch(`${config.url}/requests/${id}`, {
+    return fetch(`${url}/requests/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -38,7 +38,7 @@ class RequestQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${config.url}/requests/${id}`, {
+    return fetch(`${url}/requests/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())
