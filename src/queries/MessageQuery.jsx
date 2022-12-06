@@ -1,22 +1,22 @@
-const url = `https://serene-anchorage-09864.herokuapp.com/messages`
+import url from "../config";
 
 class MessageQuery {
   static all = () => {
-    return fetch(`${url}`)
+    return fetch(`${url}/messages`)
     .then(response => response.json())
     .then(jsonData => jsonData.messages)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/${id}`)
+    return fetch(`${url}/messages/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.message)
     .catch(err => console.log(err))
   };
 
   static create = (messageData) => {
-    return fetch (`${url}`, {
+    return fetch (`${url}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

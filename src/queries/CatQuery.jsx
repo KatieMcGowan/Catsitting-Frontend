@@ -1,8 +1,8 @@
-const url = `https://serene-anchorage-09864.herokuapp.com/cats`
+import url from "../config";
 
 class CatQuery {
   static all = () => {
-    return fetch(`${url}`)
+    return fetch(`${url}/cats`)
     .then(response => response.json())
     .then(jsonData => jsonData.cats)
     .catch(err => console.log(err))
@@ -16,7 +16,7 @@ class CatQuery {
   };
 
   static create = (catData) => {
-    return fetch (`${url}`, {
+    return fetch (`${url}/cats`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,7 +28,7 @@ class CatQuery {
   };
   
   static update = (id, catData) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${url}/cats/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -39,7 +39,7 @@ class CatQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${url}/cats/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())

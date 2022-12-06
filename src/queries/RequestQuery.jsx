@@ -1,22 +1,22 @@
-const url = `https://serene-anchorage-09864.herokuapp.com/requests`
+import url from "../config";
 
 class RequestQuery {
   static all = () => {
-    return fetch(`${url}`)
+    return fetch(`${url}/requests`)
     .then(response => response.json())
     .then(jsonData => jsonData.requests)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/${id}`)
+    return fetch(`${url}/requests/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.request)
     .catch(err => console.log(err))
   };
 
   static create = (requestData) => {
-    return fetch (`${url}`, {
+    return fetch (`${url}/requests`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +27,7 @@ class RequestQuery {
   };
   
   static update = (id, requestData) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${url}/requests/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -38,7 +38,7 @@ class RequestQuery {
   };
 
   static delete = (id) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${url}/requests/${id}`, {
       method: "DELETE"
     })
     .then(response => response.json())

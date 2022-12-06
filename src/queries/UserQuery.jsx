@@ -1,22 +1,22 @@
-const url = `https://serene-anchorage-09864.herokuapp.com/users`
+import url from "../config";
 
 class UserQuery {
   static all = () => {
-    return fetch(`${url}`)
+    return fetch(`${url}/users`)
     .then(response => response.json())
     .then(jsonData => jsonData.users)
     .catch(err => console.log(err))
   };
 
   static show = (id) => {
-    return fetch(`${url}/${id}`)
+    return fetch(`${url}/users/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.user)
     .catch(err => console.log(err))
   };
 
   static create = (userData) => {
-    return fetch (`${url}`, {
+    return fetch (`${url}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +27,7 @@ class UserQuery {
   };
 
   static update = (id, userData) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${url}/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
