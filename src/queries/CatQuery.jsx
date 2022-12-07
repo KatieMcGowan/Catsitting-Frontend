@@ -9,7 +9,7 @@ class CatQuery {
   };
 
   static show = (id) => {
-    return fetch(`${url}/${id}`)
+    return fetch(`${url}/cats/${id}`)
     .then(response => response.json())
     .then(jsonData => jsonData.cat)
     .catch(err => console.log(err))
