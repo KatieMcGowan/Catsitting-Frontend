@@ -1,4 +1,4 @@
-const url = "http://localhost:4000/"
+const url = "http://localhost:10000"
 
 class UserQuery {
   static all = () => {
@@ -36,7 +36,6 @@ class UserQuery {
     })
     .then(response => response.json())
   };
-
 };
 
 export default UserQuery;
