@@ -1,4 +1,8 @@
-const url = "http://localhost:4000/"
+require("dotenv").config();
+
+const url = process.env.HITAIL_APP_SERVER_API;
+
+// const url = "https://poppyseed-tidal-109743.onrender.com"
 
 class CatQuery {
   static all = () => {
