@@ -1,4 +1,4 @@
-const url = `https://peaceful-violetblooms-486731.onrender.com`
+const url = "http://localhost:4000/"
 
 class RequestQuery {
   static all = () => {
